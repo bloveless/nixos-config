@@ -19,7 +19,9 @@
   } ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    8080
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   systemd.services.podman-nginx = {
