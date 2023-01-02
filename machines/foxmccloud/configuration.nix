@@ -29,7 +29,7 @@
     wantedBy = [ "default.target" ];
     after = [ "network.target" ];
     description = "Text nginx pod";
-    paths = [ pkgs.shadow ];
+    path = [ pkgs.shadow ];
     serviceConfig =
     let
       podmancli = "${config.virtualisation.podman.package}/bin/podman";
