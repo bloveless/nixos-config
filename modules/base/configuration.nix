@@ -17,6 +17,7 @@
     wget
     curl
     git
+    shadow # for newuidmap and newgidmap binaries
   ];
 
   # Enable the OpenSSH daemon.
