@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
+    ../../modules/users/podmanager.nix
     ../../modules/users/brennon.nix
   ];
 
