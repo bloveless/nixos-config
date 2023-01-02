@@ -20,5 +20,37 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
+
+  systemd.services.podman-nginx = {
+    enable = true;
+    wantedBy = [ "default.target" ];
+    after = [ "network.target" ];
+    description = "Text nginx pod";
+    serviceConfig =
+    let
+      podmancli = "${config.virtualisation.podman.package}/bin/podman";
+      image_version = "1.23.3";
+      podname = "nginx";
+    in
+    {
+      User = "podmanager";
+      ExecStartPre= [
+        "${podmancli} stop -i ${podname}"
+        "${podmancli} rm -i ${podname}"
+      ];
+      ExecStart = "${podmancli} run " +
+        "--rm " +
+        "--name=${podname} " +
+        "--log-driver=journald " +
+        "-p '0.0.0.0:8080:80' " +
+        "docker.io/library/nginx:${image_version}";
+
+      ExecStop = "${podmancli} stop ${podname}";
+      ExecStopPost = "${podmancli} rm -i ${podname}";
+      Restart = "always";
+      TimeoutStopSec = 15;
+    };
+  };
+
 }
 
