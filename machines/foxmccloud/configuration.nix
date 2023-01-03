@@ -60,7 +60,6 @@
         "--sdnotify=conmon " +
         "--log-driver=journald " +
         "-p '0.0.0.0:8080:80' " +
-        # "-v '/home/podmanager/hass/config:/config' " +
         "${image} ${endpodmancli}"; 
 
       Type = "notify";
