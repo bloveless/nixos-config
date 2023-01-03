@@ -24,13 +24,13 @@
   # ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  virtualisation.oci-containers.containers = {
-    nginx = {
-      image = "nginx:1.23.3";
-      autoStart = true;
-      ports = [ "0.0.0.0:8080:80" ];
-    };
-  };
+  # virtualisation.oci-containers.containers = {
+  #   nginx = {
+  #     image = "nginx:1.23.3";
+  #     autoStart = true;
+  #     ports = [ "0.0.0.0:8080:80" ];
+  #   };
+  # };
 
   # systemd.services.podman-nginx.serviceConfig.User = "podmanager";
 
