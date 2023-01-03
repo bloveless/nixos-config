@@ -21,7 +21,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.dbus.enable = true;
 
   virtualisation = {
     podman = {

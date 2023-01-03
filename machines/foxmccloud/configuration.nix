@@ -32,10 +32,7 @@
     };
   };
 
-  systemd.services.podman-nginx.path = [
-    pkgs.shadow # for newuidmap and newgidmap binaries
-  ];
-  systemd.services.podman-nginx.serviceConfig.User = "podmanager";
+  # systemd.services.podman-nginx.serviceConfig.User = "podmanager";
 
   # systemd.services.podman-nginx = {
   #   enable = true;
