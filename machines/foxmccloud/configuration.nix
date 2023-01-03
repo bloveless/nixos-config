@@ -32,6 +32,8 @@
     };
   };
 
+  systemd.services.podman-nginx.serviceConfig.User = "podmanager";
+
   # systemd.services.podman-nginx = {
   #   enable = true;
   #   wantedBy = [ "default.target" ];
