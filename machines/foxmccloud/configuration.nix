@@ -34,6 +34,44 @@
 
   # systemd.services.podman-nginx.serviceConfig.User = "podmanager";
 
+    systemd.services.podman-nginx = {
+    enable = true;
+    wantedBy = [ "default.target" ]; 
+    after = [ "network.target" ];
+    description = "Nginx pod";
+    serviceConfig = 
+    let 
+      podmancli = "${pkgs.bash}/bin/bash -l -c \"${config.virtualisation.podman.package}/bin/podman";
+      endpodmancli = "\"";
+      image = "nginx:1.23.3";
+      podname = "nginx";
+      cleanup_pod = [
+        "${podmancli} stop -i ${podname} ${endpodmancli}"
+        "${podmancli} rm -i ${podname} ${endpodmancli}"
+      ];
+    in
+    {
+      User = "podmanager";
+      WorkingDirectory = "/home/podmanager";
+      ExecStartPre = cleanup_pod;
+      ExecStart = "${podmancli} run " +
+        "--rm " +
+        "--name=${podname} " +
+        "--sdnotify=conmon " +
+        "--log-driver=journald " +
+        "-p '0.0.0.0:8080:80' " +
+        # "-v '/home/podmanager/hass/config:/config' " +
+        "${image} ${endpodmancli}"; 
+
+      Type = "notify";
+      NotifyAccess = "all";
+      ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
+      ExecStopPost = cleanup_pod;
+      Restart = "always";
+      TimeoutStopSec = 15;
+    };
+  };
+
   # systemd.services.podman-nginx = {
   #   enable = true;
   #   wantedBy = [ "default.target" ];
