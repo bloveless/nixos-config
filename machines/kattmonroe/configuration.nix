@@ -11,6 +11,7 @@
     ../../modules/nfs/media.nix
     ../../modules/users/podmanager.nix
     ../../modules/users/brennon.nix
+    ../../modules/podman.nix
   ];
 
   networking.hostName = "kattmonroe"; # Define your hostname.
@@ -25,46 +26,17 @@
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  (let commonPodmanOptions = {
+  services.rootless-podman = {
     enable = true;
-    wantedBy = [ "default.target" ];
-    after = [ "network.target" ];
-    description = "Nginx pod";
-    serviceConfig =
-    let
-      podmancli = "${pkgs.bash}/bin/bash -l -c \"${config.virtualisation.podman.package}/bin/podman";
-      endpodmancli = "\"";
-      # image = "nginx:1.23.3";
-      # podname = "nginx";
-      cleanup_pod = [
-        "${podmancli} stop -i ${podname} ${endpodmancli}"
-        "${podmancli} rm -i ${podname} ${endpodmancli}"
-      ];
-    in
-    {
-      User = "podmanager";
-      WorkingDirectory = "/home/podmanager";
-      ExecStartPre = cleanup_pod;
-      ExecStart = "${podmancli} run " +
-        "--rm " +
-        "--name=${podname} " +
-        "--log-driver=journald " ++
-        extraConfigs ++
-        "${image} ${endpodmancli}";
-
-      ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
-      ExecStopPost = cleanup_pod;
-      Restart = "always";
-      TimeoutStopSec = 15;
+    containers = {
+      nginx = {
+        podName = "nginx";
+        description = "Nginx pod";
+        imageName = "nginx";
+        imageTag = "1.23.3";
+        extraConfigs = "-p 0.0.0.0:8080:80";
+      };
     };
-  } in {
-    systemd.services.podman-nginx = commonPodmanOptions // {
-      image = "nginx:1.23.3";
-      podname = "nginx";
-      extraConfigs = [ # This is where all the ports, volumes, and network settings will be
-        "-p '0.0.0.0:8080:80'"
-      ];
-    };
-  });
+  };
 }
 
