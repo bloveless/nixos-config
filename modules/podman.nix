@@ -64,7 +64,7 @@ in {
 						"--rm " +
 						"--name=${podname} " +
 						"--log-driver=journald " +
-						concatStringsSep " " value.extraConfig +
+						concatStringsSep " " value.extraConfigs +
 						" ${image} ${endpodmancli}";
 
 					ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
