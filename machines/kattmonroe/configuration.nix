@@ -24,6 +24,7 @@
   networking.firewall.allowedTCPPorts = [
     8080
     8081
+    8082
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
@@ -45,6 +46,13 @@
 	imageTag = "2.4.54";
 	extraConfig = "-p 0.0.0.0:8081:80";
       };
+
+      caddy = {
+        podName = "caddy";
+        description = "Caddy pod";
+        imageName = "caddy";
+        imageTag = "2.6.2";
+        extraConfig = "-p 0.0.0.0:8082:80 -v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html"
     };
   };
 }
