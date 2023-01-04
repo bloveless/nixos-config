@@ -36,7 +36,7 @@
         description = "Nginx pod";
         imageName = "nginx";
         imageTag = "1.23.3";
-        extraConfig = [
+        extraConfigs = [
           "-p 0.0.0.0:8080:80"
         ];
       };
