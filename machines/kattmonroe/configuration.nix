@@ -23,6 +23,7 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     8080
+    8081
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
@@ -34,7 +35,15 @@
         description = "Nginx pod";
         imageName = "nginx";
         imageTag = "1.23.3";
-        extraConfigs = "-p 0.0.0.0:8080:80";
+        extraConfig = "-p 0.0.0.0:8080:80";
+      };
+
+      apache = {
+	podName = "apache";
+	description = "Apache2 pod";
+	imageName = "httpd";
+	imageTag = "2.4.54";
+	extraConfig = "-p 0.0.0.0:8081:80";
       };
     };
   };

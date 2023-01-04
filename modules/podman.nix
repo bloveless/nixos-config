@@ -5,13 +5,12 @@ let
 in {
 	options.services.rootless-podman = {
 		enable = mkOption {
-			types = types.bool;
+			type = types.bool;
 			default = false;
 			description = ''
 				Create one or many rootless podman containers.
 			'';
-		}
-
+		};
 
 		containers = mkOption {
 			type = types.submodule {
@@ -38,17 +37,17 @@ in {
 			description = ''
 				Definition of containers.
 			'';
-		}
+		};
 	};
 
-	config = mkIf cfg.Enable {
-		mapAttrs (name: value: nameValuePair(systemd.services."podman-${name}") ({
+	config = mkIf cfg.enable {
+		systemd.services = mapAttrs' (name: value: nameValuePair("podman-${name}") ({
 			enable = true;
 			wantedBy = [ "default.target" ];
 			after = [ "network.target" ];
 			description = value.description;
 			serviceConfig =
-				let {
+				let
 					podmancli = "${pkgs.bash}/bin/bash -l -c \"${config.virtualisation.podman.package}/bin/podman";
 					endpodmancli = "\"";
 					image = "${value.imageName}:${value.imageTag}";
@@ -57,7 +56,7 @@ in {
 						"${podmancli} stop -i ${podname} ${endpodmancli}"
 						"${podmancli} rm -i ${podname} ${endpodmancli}"
 					];
-				} in {
+				in {
 					User = "podmanager";
 					WorkingDirectory = "/home/podmanager";
 					ExecStartPre = cleanup_pod;
@@ -65,14 +64,14 @@ in {
 						"--rm " +
 						"--name=${podname} " +
 						"--log-driver=journald " +
-						"-p '0.0.0.0:8080:80' " +
-						"${image} ${endpodmancli}";
+						value.extraConfig +
+						" ${image} ${endpodmancli}";
 
 					ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
 					ExecStopPost = cleanup_pod;
 					Restart = "always";
 					TimeoutStopSec = 15;
 				};
-		})) { cfg.containers };
+		})) cfg.containers;
 	};
 }
