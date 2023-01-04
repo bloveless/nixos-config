@@ -11,7 +11,7 @@
     ../../modules/nfs/media.nix
     ../../modules/users/podmanager.nix
     ../../modules/users/brennon.nix
-    ../../modules/podman.nix
+    ../../modules/podman-rootless.nix
   ];
 
   networking.hostName = "foxmccloud"; # Define your hostname.
@@ -26,7 +26,7 @@
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  services.rootless-podman = {
+  services.podman-rootless = {
     enable = true;
     containers = {
       nginx = {

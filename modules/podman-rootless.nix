@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-	cfg = config.services.rootless-podman;
+	cfg = config.services.podman-rootless;
 in {
-	options.services.rootless-podman = {
+	options.services.podman-rootless = {
 		enable = mkOption {
 			type = types.bool;
 			default = false;
