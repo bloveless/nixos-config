@@ -21,6 +21,6 @@
 			TimoutIdleSec = "600";
 		};
 	}; in [
-		(commonAutoMountOptions // { where = "/mnt/media" })
+		(commonAutoMountOptions // { where = "/mnt/media"; })
 	];
 }
