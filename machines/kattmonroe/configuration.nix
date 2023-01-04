@@ -25,7 +25,7 @@
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  systemd.services.podman-nginx = {
+  (let commonPodmanOptions = {
     enable = true;
     wantedBy = [ "default.target" ];
     after = [ "network.target" ];
@@ -34,8 +34,8 @@
     let
       podmancli = "${pkgs.bash}/bin/bash -l -c \"${config.virtualisation.podman.package}/bin/podman";
       endpodmancli = "\"";
-      image = "nginx:1.23.3";
-      podname = "nginx";
+      # image = "nginx:1.23.3";
+      # podname = "nginx";
       cleanup_pod = [
         "${podmancli} stop -i ${podname} ${endpodmancli}"
         "${podmancli} rm -i ${podname} ${endpodmancli}"
@@ -48,8 +48,8 @@
       ExecStart = "${podmancli} run " +
         "--rm " +
         "--name=${podname} " +
-        "--log-driver=journald " +
-        "-p '0.0.0.0:8080:80' " +
+        "--log-driver=journald " ++
+        extraConfigs ++
         "${image} ${endpodmancli}";
 
       ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
@@ -57,6 +57,14 @@
       Restart = "always";
       TimeoutStopSec = 15;
     };
-  };
+  } in {
+    systemd.services.podman-nginx = commonPodmanOptions // {
+      image = "nginx:1.23.3";
+      podname = "nginx";
+      extraConfigs = [ # This is where all the ports, volumes, and network settings will be
+        "-p '0.0.0.0:8080:80'"
+      ];
+    };
+  });
 }
 
