@@ -19,7 +19,7 @@ in {
 						type = types.str;
 					};
 					description = mkOption {
-						types = types.str
+						types = types.str;
 						default = "Rootless podman container";
 					};
 					imageName = mkOption {
@@ -30,7 +30,7 @@ in {
 					};
 					extraConfig = mkOption {
 						type = types.str;
-					}
+					};
 				};
 			};
 			default = {};
