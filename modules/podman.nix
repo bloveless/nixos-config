@@ -13,7 +13,7 @@ in {
 		};
 
 		containers = mkOption {
-			type = types.submodule {
+			type = types.attrsOf(types.submodule {
 				options = {
 					podName = mkOption {
 						type = types.str;
@@ -32,7 +32,7 @@ in {
 						type = types.str;
 					};
 				};
-			};
+			});
 			default = {};
 			description = ''
 				Definition of containers.
