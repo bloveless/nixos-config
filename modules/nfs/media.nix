@@ -3,6 +3,10 @@
 {
 	services.rpcbind.enable = true; # Needed for NFS
 
+	environment.systemPackages = with pkgs; [
+		pkgs.nfs-utils
+	];
+
 	systemd.mounts = let commonMountOptions = {
 		type = "nfs";
 		mountConfig = {
