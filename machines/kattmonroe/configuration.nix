@@ -36,15 +36,19 @@
         description = "Nginx pod";
         imageName = "nginx";
         imageTag = "1.23.3";
-        extraConfig = "-p 0.0.0.0:8080:80";
+        extraConfig = [
+          "-p 0.0.0.0:8080:80"
+        ];
       };
 
       apache = {
-	podName = "apache";
-	description = "Apache2 pod";
-	imageName = "httpd";
-	imageTag = "2.4.54";
-	extraConfig = "-p 0.0.0.0:8081:80";
+        podName = "apache";
+        description = "Apache2 pod";
+        imageName = "httpd";
+        imageTag = "2.4.54";
+        extraConfigs = [
+          "-p 0.0.0.0:8081:80"
+        ];
       };
 
       caddy = {
@@ -52,7 +56,10 @@
         description = "Caddy pod";
         imageName = "caddy";
         imageTag = "2.6.2";
-        extraConfig = "-p 0.0.0.0:8082:80 -v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html";
+        extraConfigs = [
+          "-p 0.0.0.0:8082:80"
+          "-v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html"
+        ];
       };
     };
   };

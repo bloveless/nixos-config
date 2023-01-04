@@ -28,8 +28,8 @@ in {
 					imageTag = mkOption {
 						type = types.str;
 					};
-					extraConfig = mkOption {
-						type = types.str;
+					extraConfigs = mkOption {
+						type = types.listOf(types.str);
 					};
 				};
 			});
@@ -64,7 +64,7 @@ in {
 						"--rm " +
 						"--name=${podname} " +
 						"--log-driver=journald " +
-						value.extraConfig +
+						concatStringsSep " " value.extraConfig +
 						" ${image} ${endpodmancli}";
 
 					ExecStop = "${podmancli} stop ${podname} ${endpodmancli}";
