@@ -6,7 +6,7 @@
 	systemd.mounts = let commonMountOptions = {
 		type = "nfs";
 		mountConfig = {
-			Options = "noatime,rw,sync,hard,nfsvers=4.1";
+			Options = "noatime"; # ,rw,sync,hard,nfsvers=4.1";
 		};
 	}; in [
 		(commonMountOptions // {
@@ -18,7 +18,7 @@
 	systemd.automounts = let commonAutoMountOptions = {
 		wantedBy = [ "multi-user.target" ];
 		automountConfig = {
-			TimoutIdleSec = "600";
+			TimeoutIdleSec = "600";
 		};
 	}; in [
 		(commonAutoMountOptions // { where = "/mnt/media"; })
