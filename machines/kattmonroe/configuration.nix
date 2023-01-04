@@ -52,7 +52,7 @@
         description = "Caddy pod";
         imageName = "caddy";
         imageTag = "2.6.2";
-        extraConfig = "-p 0.0.0.0:8082:80 -v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html"
+        extraConfig = "-p 0.0.0.0:8082:80 -v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html";
     };
   };
 }
