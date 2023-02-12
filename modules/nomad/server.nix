@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  import "./secrets.nix" consul;
+  import ./secrets.nix consul;
 
   environment.etc = {
     "consul.d/certs/consul-agent-ca-key.pem".text = consul."consul-agent-ca-key.pem";
