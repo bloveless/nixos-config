@@ -2,7 +2,7 @@
 
 {
   systemd.services.nomad-server = {
-    descripiton = "Nomad server";
+    description = "Nomad server";
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
     serviceConfig = {
