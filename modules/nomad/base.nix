@@ -18,7 +18,7 @@
 
   users.groups.nomad = {};
   users.users.nomad = {
-    isNormalUser = false;
+    isNormalUser = true;
     extraGroups = [];
     group = "nomad";
     packages = with pkgs; [];
