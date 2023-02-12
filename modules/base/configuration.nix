@@ -22,6 +22,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  security.sudo.extraRules= [{
+    groups = [ "wheel" ];
+    commands = [
+      {
+        command = "nixos-rebuild";
+        options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+      }
+    ];
+  }];
+
   virtualisation = {
     podman = {
       enable = true;
