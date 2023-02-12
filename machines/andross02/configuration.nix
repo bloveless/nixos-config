@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
+    ../../modules/nomad/base.nix
   ];
 
   networking.hostName = "andross02"; # Define your hostname.
@@ -19,19 +20,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    nomad_1_4
-    consul
-  ];
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    4646 # nomad http api
-    4647 # nomad internal rpc
-    4648 # nomad gossip protocol
-  ];
-  networking.firewall.allowedUDPPorts = [
-    4648 # nomad gossip protocol
-  ];
+  environment.systemPackages = with pkgs; [];
 }
 
