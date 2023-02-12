@@ -26,7 +26,7 @@
     groups = [ "wheel" ];
     commands = [
       {
-        command = "nixos-rebuild";
+        command = "/run/current-system/sw/bin/nixos-rebuild";
         options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
       }
     ];
