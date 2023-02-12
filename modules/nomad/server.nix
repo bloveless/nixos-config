@@ -25,7 +25,6 @@
     device = "/dev/null";
     fsType = "none";
     options = [ "bind" ];
-    copyWithPermissions = true;
     permissions = "0700";
   };
 
