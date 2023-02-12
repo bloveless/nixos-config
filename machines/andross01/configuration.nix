@@ -10,6 +10,7 @@
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
+    ../../modules/nomad/server.nix
   ];
 
   networking.hostName = "andross01"; # Define your hostname.
