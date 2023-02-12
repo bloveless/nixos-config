@@ -3,6 +3,8 @@
 {
   services.nomad = {
     enable = true;
+    package = pkgs.nomad_1_4;
+    enableDocker = false;
     settings = {
       datacenter = "homelab01";
 
