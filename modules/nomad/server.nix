@@ -43,10 +43,6 @@ with lib;
         performance {
           raft_multiplier = 1
         }
-
-        ui_config {
-          enabled = true
-        }
       '';
       
       "consul.d/server.hcl".text = ''
@@ -72,6 +68,7 @@ with lib;
 
     services.consul = {
       enable = true;
+      webUi = true;
     };
 
     services.nomad = {
