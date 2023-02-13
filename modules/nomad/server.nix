@@ -60,7 +60,7 @@ with lib;
         }
 
         addresses {
-          grpc = "127.0.0.1"
+          grpc_tls = "127.0.0.1"
         }
 
         ports {
