@@ -9,13 +9,7 @@ with lib;
 
   config = {
     environment.etc = with import ./secrets.nix; {
-      "consul.d/certs/consul-agent-ca-key.pem".text = consul."consul-agent-ca-key.pem";
-
       "consul.d/certs/consul-agent-ca.pem".text = consul."consul-agent-ca.pem";
-
-      "consul.d/certs/homelab01-server-consul-0-key.pem".text = consul."homelab01-server-consul-0-key.pem";
-
-      "consul.d/certs/homelab01-server-consul-0.pem".text = consul."homelab01-server-consul-0.pem";
 
       "consul.d/consul.hcl".text = ''
         datacenter = "homelab01"
@@ -25,8 +19,6 @@ with lib;
         verify_server_hostname = true
 
         ca_file = "/etc/consul.d/certs/consul-agent-ca.pem"
-        cert_file = "/etc/consul.d/certs/homelab01-server-consul-0.pem"
-        key_file = "/etc/consul.d/certs/homelab01-server-consul-0-key.pem"
 
         auto_encrypt {
           allow_tls = true
@@ -45,10 +37,8 @@ with lib;
         }
       '';
       
-      "consul.d/server.hcl".text = ''
-        client = true
+      "consul.d/client.hcl".text = ''
       '';
-
     };
 
     services.consul = {
