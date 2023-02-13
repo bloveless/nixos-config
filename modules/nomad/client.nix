@@ -9,6 +9,8 @@ with lib;
 
   config = {
     environment.etc = with import ./secrets.nix; {
+      "consul.d/certs/consul-agent-ca-key.pem".text = consul."consul-agent-ca-key.pem";
+
       "consul.d/certs/consul-agent-ca.pem".text = consul."consul-agent-ca.pem";
 
       "consul.d/consul.hcl".text = ''
