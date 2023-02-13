@@ -9,10 +9,11 @@
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
     ../../modules/nfs/media.nix
-    ../../modules/users/podmanager.nix
     ../../modules/users/brennon.nix
-    ../../modules/podman-rootless.nix
+    ../../modules/nomad/client.nix
   ];
+
+  consul.ipAddress = "192.168.5.107";
 
   networking.hostName = "kattmonroe"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
@@ -21,47 +22,7 @@
   } ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    8080
-    8081
-    8082
-  ];
+  # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-
-  services.podman-rootless = {
-    enable = true;
-    containers = {
-      nginx = {
-        podName = "nginx";
-        description = "Nginx pod";
-        imageName = "nginx";
-        imageTag = "1.23.3";
-        extraConfigs = [
-          "-p 0.0.0.0:8080:80"
-        ];
-      };
-
-      apache = {
-        podName = "apache";
-        description = "Apache2 pod";
-        imageName = "httpd";
-        imageTag = "2.4.54";
-        extraConfigs = [
-          "-p 0.0.0.0:8081:80"
-        ];
-      };
-
-      caddy = {
-        podName = "caddy";
-        description = "Caddy pod";
-        imageName = "caddy";
-        imageTag = "2.6.2";
-        extraConfigs = [
-          "-p 0.0.0.0:8082:80"
-          "-v /mnt/media/caddytest/index.html:/usr/share/caddy/index.html"
-        ];
-      };
-    };
-  };
 }
 
