@@ -18,7 +18,7 @@ with lib;
       "consul.d/certs/homelab01-server-consul-0.pem".text = consul."homelab01-server-consul-0.pem";
 
       "consul.d/consul.hcl".text = ''
-        datacenter = "dc1"
+        datacenter = "homelab01"
         encrypt = "${consul.encryption_key}"
         verify_incoming = true
         verify_outgoing = true
