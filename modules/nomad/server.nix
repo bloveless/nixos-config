@@ -60,11 +60,11 @@ with lib;
         }
 
         addresses {
-          grpc_tls = "127.0.0.1"
+          grpc = "127.0.0.1"
         }
 
         ports {
-          grpc  = 8502
+          grpc_tls = 8503
         }
       '';
 
