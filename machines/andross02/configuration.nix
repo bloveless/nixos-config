@@ -10,8 +10,10 @@
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
-    ../../modules/nomad/server.nix { ipAddress = "192.168.5.57"; }
+    ../../modules/nomad/server.nix
   ];
+
+  consul.ipAddress = "192.168.5.57";
 
   networking.hostName = "andross02"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
