@@ -46,22 +46,7 @@ with lib;
       '';
       
       "consul.d/server.hcl".text = ''
-        server = true
-        bootstrap_expect = 3
-        client_addr = "0.0.0.0"
-        bind_addr = "${config.consul.ipAddress}"
-
-        connect {
-          enabled = true
-        }
-
-        addresses {
-          grpc = "127.0.0.1"
-        }
-
-        ports {
-          grpc_tls = 8503
-        }
+        client = true
       '';
 
     };
