@@ -20,10 +20,6 @@ with lib;
 
         ca_file = "/etc/consul.d/certs/consul-agent-ca.pem"
 
-        auto_encrypt {
-          allow_tls = true
-        }
-
         retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
 
         acl {

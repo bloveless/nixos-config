@@ -1,4 +1,8 @@
-all: fox falco katt andross
+all: servers clients
+
+servers: andross
+
+clients: fox falco katt
 
 fox:
 	ssh -t fox 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
