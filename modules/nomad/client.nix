@@ -38,6 +38,7 @@ with lib;
       '';
       
       "consul.d/client.hcl".text = ''
+        bind_addr = "${config.consul.ipAddress}"
       '';
     };
 
