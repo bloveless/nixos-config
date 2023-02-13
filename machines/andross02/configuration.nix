@@ -10,7 +10,7 @@
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
-    ../../modules/nomad/server.nix
+    ../../modules/nomad/server.nix { ipAddress = "192.168.5.57"; }
   ];
 
   networking.hostName = "andross02"; # Define your hostname.

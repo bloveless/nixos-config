@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ipAddress, ... }:
 
 {
   environment.etc = with import ./secrets.nix; {
@@ -46,6 +46,7 @@
       server = true
       bootstrap_expect = 3
       client_addr = "0.0.0.0"
+      bind_addr = "${ipAddress}"
 
       connect {
         enabled = true
