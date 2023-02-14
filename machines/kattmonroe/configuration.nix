@@ -37,11 +37,11 @@
         state = "MASTER";
         unicastSrcIp = "192.168.5.107";
         unicastPeers = [ "192.168.5.56" "192.168.5.19" ];
-        virtualRouterId = 100
+        virtualRouterId = 100;
 
         virtualIps = [
           {
-            addr = "192.168.5.202/22"
+            addr = "192.168.5.202/22";
           };
         ];
 
