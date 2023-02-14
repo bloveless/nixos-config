@@ -38,6 +38,10 @@ with lib;
           enabled = true
           default_policy = "deny"
           enable_token_persistence = true
+
+          tokens {
+            default = "${consul.agent_token}"
+          }
         }
 
         performance {
