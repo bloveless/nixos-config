@@ -10,6 +10,7 @@
     ../../modules/base/configuration.nix
     ../../modules/nfs/media.nix
     ../../modules/users/brennon.nix
+    ../../modules/nomad/base.nix
     ../../modules/nomad/client.nix
   ];
 
