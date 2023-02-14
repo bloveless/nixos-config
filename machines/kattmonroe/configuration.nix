@@ -27,5 +27,34 @@
     9998 # fabio ui
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
+
+  keepalived = with import ./secrets.nix {
+    enable = true;
+    vrrpInstances = {
+      VI_2 = {
+        interface = "ens18";
+        priority = 150;
+        state = "MASTER";
+        unicastSrcIp = "192.168.5.107";
+        unicastPeers = [ "192.168.5.56" "192.168.5.19" ];
+        virtualRouterId = 100
+
+        virtualIps = [
+          {
+            addr = "192.168.5.202/22"
+          };
+        ];
+
+        extraConfig = ''
+          advert_int 1
+
+          authentication {
+            auth_type PASS
+            auth_pass ${keepalived.auth_pass}
+          }
+        '';
+      };
+    };
+  }
 }
 
