@@ -28,7 +28,7 @@
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  keepalived = with import ./secrets.nix {
+  keepalived = with import ./secrets.nix; {
     enable = true;
     vrrpInstances = {
       VI_2 = {
