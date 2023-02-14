@@ -36,7 +36,7 @@ with lib;
 
         acl {
           enabled = true
-          default_policy = "allow"
+          default_policy = "deny"
           enable_token_persistence = true
         }
 
@@ -81,6 +81,10 @@ with lib;
         server = {
           enabled = true;
           bootstrap_expect = 3;
+        };
+
+        acl = {
+          enabled = true;
         };
       };
     };
