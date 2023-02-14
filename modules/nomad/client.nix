@@ -43,7 +43,7 @@ with lib;
       webUi = true;
     };
 
-    services.nomad = {
+    services.nomad = with import ./secrets.nix; {
       enable = true;
       package = pkgs.nomad_1_4;
       enableDocker = true;
@@ -52,6 +52,10 @@ with lib;
 
         client = {
           enabled = true;
+        };
+
+        consul = {
+          token = nomad.consul_client_token
         };
       };
     };
