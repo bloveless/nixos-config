@@ -55,7 +55,7 @@ with lib;
         };
 
         consul = {
-          token = nomad.consul_client_token
+          token = nomad.consul_client_token;
         };
       };
     };

@@ -88,7 +88,7 @@ with lib;
         };
 
         consul = {
-          token = nomad.consul_server_token
+          token = nomad.consul_server_token;
         };
       };
     };
