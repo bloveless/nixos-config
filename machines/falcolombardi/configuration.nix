@@ -42,7 +42,7 @@
         virtualIps = [
           {
             addr = "192.168.5.202/22";
-          };
+          }
         ];
 
         extraConfig = ''
