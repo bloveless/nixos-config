@@ -38,7 +38,7 @@ with lib;
 
         acl {
           tokens {
-            default = "${consul.agent_token}
+            default = "${consul.agent_token}"
           }
         }
       '';
