@@ -22,7 +22,10 @@
   } ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    9999 # fabio lb
+    9998 # fabio ui
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 }
 
