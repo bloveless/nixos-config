@@ -6,7 +6,7 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "caddy-${version}-with-cloudflare-${cloudflare_version}";
+  name = "caddy-2.6.4-with-cloudflare-${cloudflare_version}";
 
   src = fetchFromGitHub {
     owner = "caddyserver";
