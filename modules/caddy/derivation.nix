@@ -5,11 +5,11 @@ let
   caddy_commit = "0db29e2ce9799f652f3d16fd5aed6e426d23bd0a"; # 2.6.4 tag
 
   # Set the version of the Cloudflare module to include
-  cloudflare_version = "latest";
+  cloudflare_commit = "ed330a80c094fe73a59b5d8abc2624222550cc7e"; # latest
 in
 
 stdenv.mkDerivation rec {
-  name = "caddy-${version}-with-cloudflare-${cloudflare_version}";
+  name = "caddy-${caddy_commit}-with-cloudflare-${cloudflare_commit}";
 
   dontUnpack = true;
 
@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
 
   # Build Caddy with the Cloudflare module
   buildPhase = ''
-    ${pkgs.xcaddy}/bin/xcaddy build --with github.com/caddyserver/caddy/v2=github.com/caddyserver/caddy@${caddy_commit} --with github.com/caddy-dns/cloudflare@${cloudflare_version}
+    ${pkgs.xcaddy}/bin/xcaddy build --with github.com/caddyserver/caddy/v2=github.com/caddyserver/caddy@${caddy_commit} --with github.com/caddy-dns/cloudflare@${cloudflare_commit}
   '';
 
   # Install Caddy
