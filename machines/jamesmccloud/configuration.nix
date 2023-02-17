@@ -27,7 +27,7 @@
   services.caddy = {
     enable = true;
     package = pkgs.caddy-cloudflare;
-    acmeCa = "https://acme-v02.api.letsencrypt.org/directory";
+    acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
 
     virtualHosts = {
