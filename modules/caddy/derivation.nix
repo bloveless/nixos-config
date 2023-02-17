@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
     ln -s $src $GOPATH/src/github.com/caddyserver/caddy
 
     cd $GOPATH/src/github.com/caddyserver/caddy/cmd/caddy
-    ${pkgs.xcaddy} build --with github.com/caddy-dns/cloudflare@${cloudflare_version}
+    ${pkgs.xcaddy}/bin/xcaddy build --with github.com/caddy-dns/cloudflare@${cloudflare_version}
   '';
 
   # Install Caddy
