@@ -1,4 +1,4 @@
-all: servers clients
+all: james servers clients
 
 servers: andross
 
