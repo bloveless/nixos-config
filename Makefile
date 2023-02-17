@@ -4,6 +4,9 @@ servers: andross
 
 clients: fox falco katt
 
+james:
+	ssh -t james 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
+
 fox:
 	ssh -t fox 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
 
