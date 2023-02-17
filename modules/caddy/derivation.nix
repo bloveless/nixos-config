@@ -11,6 +11,10 @@ in
 stdenv.mkDerivation rec {
   name = "caddy-${version}-with-cloudflare-${cloudflare_version}";
 
+  # This derivation only uses another command rather than building from sources
+  # Don't unpack will remove the requirements to include sources
+  dontUnpack = true;
+
   buildInputs = [ go ];
 
   # Build Caddy with the Cloudflare module
