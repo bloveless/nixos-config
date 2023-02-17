@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
 
   # Build Caddy with the Cloudflare module
   buildPhase = ''
-    ${pkgs.xcaddy}/bin/xcaddy build --with github.com/caddyserver/caddy/v2=github.com/caddyserver/caddy@${caddy_commit} --with github.com/caddy-dns/cloudflare@${cloudflare_commit}
+    ${pkgs.xcaddy}/bin/xcaddy build --with github.com/caddyserver/caddy/v2@v2.6.4 --with github.com/caddy-dns/cloudflare@${cloudflare_commit}
   '';
 
   # Install Caddy
