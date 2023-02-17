@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     owner = "caddyserver";
     repo = "caddy";
     rev = "v${version}";
-    sha256 = "1gcbi0zrmf83v6xdj7b8vpfh2d1wyhyr04cfwvvz7m8x4lprz7xp";
+    sha256 = "3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
   };
 
   buildInputs = [ go ];
