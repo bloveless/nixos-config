@@ -6,6 +6,11 @@
 
 let
    configFile = pkgs.writeText "Caddyfile" ''
+{
+	debug
+	email brennon.loveless@gmail.com
+}
+
 localhost {
 	tls internal
 	respond "Localhost"
@@ -292,6 +297,7 @@ in {
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
 
+    adapter = "caddyfile";
     configFile = configFile;
   };
 }
