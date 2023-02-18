@@ -1,12 +1,12 @@
 { lib, buildGo119Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
 let
-  version = "2.6.4";
+  version = "2.5.1";
   dist = fetchFromGitHub {
     owner = "caddyserver";
     repo = "dist";
     rev = "v${version}";
     sha256 = "sha256:1nlphjg5wh5drpwkm4cczrkxdzbv72ll7hp5x7z6ww8pzz3q10b3";
-  };
+  }
   imports = lib.flip lib.concatMapStrings plugins (pkg: "	_ \"${pkg}\"\n");
   main = ''
     package main
@@ -30,13 +30,13 @@ in buildGo119Module {
 
   src = fetchFromGitHub {
     owner = "caddyserver";
-    # repo = "caddy";
-    repo = "dist";
+    repo = "caddy";
     rev = "v${version}";
-    hash = "sha256-3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
+    sha256 = "sha256:1nlphjg5wh5drpwkm4cczrkxdzbv72ll7hp5x7z6ww8pzz3q10b3";
   };
 
-  vendorHash = "sha256-Ak6dH9tlXI/lGf0qF7ryFDUaAPOTPOUvjoim5tjYfIc=";
+  vendorSha256 = "sha256:082yh6rqr41xwg2xpqg2sdms9m7bw68bc44bgg3xwfbgdbzrs0ni";
+
 
   nativeBuildInputs = [ pkgs.breakpointHook ];
 
