@@ -42,7 +42,10 @@ buildGoModule {
   vendorHash = "sha256-toi6efYZobjDV3YPT9seE/WZAzNaxgb1ioVG4txcuXM=";
 
   overrideModAttrs = (_: {
-    preBuild = "echo '${main}' > cmd/caddy/main.go";
+    preBuild = ''
+      go get github.com/caddy-dns/cloudflare
+      echo '${main}' > cmd/caddy/main.go
+    '';
   });
 
   postPatch = ''
