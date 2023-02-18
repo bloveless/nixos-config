@@ -1,6 +1,6 @@
-{ lib, buildGo119Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
+{ lib, buildGo117Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
 let
-  version = "2.6.4";
+  version = "2.5.1";
   dist = fetchFromGitHub {
     owner = "caddyserver";
     repo = "dist";
@@ -21,7 +21,7 @@ let
     	caddycmd.Main()
     }
   '';
-in buildGo119Module {
+in buildGo117Module {
   pname = "caddy";
   inherit version;
   runVend = true;
@@ -35,15 +35,12 @@ in buildGo119Module {
     sha256 = "sha256:1nlphjg5wh5drpwkm4cczrkxdzbv72ll7hp5x7z6ww8pzz3q10b3";
   };
 
-  vendorSha256 = "sha256-s3vfTOdjIEs9ds9EtDbBpmTwPbkDkNohacUtrReZ050=";
+  vendorSha256 = "sha256:082yh6rqr41xwg2xpqg2sdms9m7bw68bc44bgg3xwfbgdbzrs0ni";
 
   nativeBuildInputs = [ pkgs.breakpointHook ];
 
   overrideModAttrs = (_: {
-    preBuild = ''
-      echo '${main}' > cmd/caddy/main.go
-      go get github.com/caddy-dns/cloudflare
-    '';
+    preBuild = "echo '${main}' > cmd/caddy/main.go";
     postInstall = "cp go.sum go.mod $out/ && ls $out/";
   });
 
