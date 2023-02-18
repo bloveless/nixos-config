@@ -271,7 +271,7 @@ in {
     ../../modules/base/configuration.nix
     ../../modules/nfs/media.nix
     ../../modules/users/brennon.nix
-    ../../modules/cloudflared/default.nix
+    ../../modules/cloudflared/service.nix
   ];
 
   cloudflared.token = with import ./secrets.nix; cloudflared.token;
