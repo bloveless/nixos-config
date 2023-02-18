@@ -7,7 +7,6 @@
 let
    configFile = pkgs.writeText "Caddyfile" ''
 {
-	debug
 	email brennon.loveless@gmail.com
 }
 
