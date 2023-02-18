@@ -45,6 +45,11 @@ buildGoModule {
     preBuild = "echo '${main}' > cmd/caddy/main.go";
   });
 
+  postPatch = ''
+    echo '${main}' > cmd/caddy/main.go
+    cat cmd/caddy/main.go
+  '';
+
   subPackages = [ "cmd/caddy" ];
 
   ldflags = [
