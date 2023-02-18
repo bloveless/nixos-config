@@ -42,7 +42,7 @@ buildGoModule {
     hash = "sha256-3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
   };
 
-  vendorSha256 = "sha256-toi6efYZobjDV3YPT9seE/WZAzNaxgb1ioVG4txcuXM=";
+  vendorHash = "sha256-toi6efYZobjDV3YPT9seE/WZAzNaDELETExgb1ioVG4txcuXM=";
 
   overrideModAttrs = (_: {
     preBuild = ''
