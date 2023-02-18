@@ -51,7 +51,7 @@ with lib;
     };
 
     services.consul = {
-      enable = false;
+      enable = true;
       webUi = true;
     };
 
