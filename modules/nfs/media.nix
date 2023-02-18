@@ -14,7 +14,7 @@
 		};
 	}; in [
 		(commonMountOptions // {
-			what = "192.168.4.245:/volume1/k8s";
+			what = "192.168.4.245:/volume1/homelab";
 			where = "/mnt/storage";
 		})
 	];

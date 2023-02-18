@@ -271,7 +271,10 @@ in {
     ../../modules/base/configuration.nix
     ../../modules/nfs/media.nix
     ../../modules/users/brennon.nix
+    ../../modules/cloudflared/default.nix
   ];
+
+  cloudflared.token = with import ./secrets.nix; cloudflared.token;
 
   networking.hostName = "jamesmccloud"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
