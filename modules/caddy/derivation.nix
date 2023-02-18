@@ -35,7 +35,7 @@ in buildGo119Module {
     hash = "sha256-3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
   };
 
-  vendorSha256 = "sha256:082yh6rqr41xwg2xpqg2sdms9m7bw68bc44bgg3xwfbgdbzrs0ni";
+  vendorHash = "sha256-Ak6dH9tlXI/lGf0qF7ryFDUaAPOTPOUvjoim5tjYfIc=";
 
   nativeBuildInputs = [ pkgs.breakpointHook ];
 
