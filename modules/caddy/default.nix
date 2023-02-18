@@ -32,7 +32,7 @@ let
   '';
 in
 buildGoModule {
-  pname = "jbl-caddy";
+  pname = "caddy-cloudflare";
   inherit version;
 
   src = fetchFromGitHub {
@@ -50,7 +50,7 @@ buildGoModule {
       go get github.com/caddy-dns/cloudflare@${cloudflare_commit}
     '';
 
-    postInstall = "cp go.sum go.mod $out/ && ls $out/";
+    postInstall = "cp go.sum go.mod $out/";
   });
 
   postPatch = ''

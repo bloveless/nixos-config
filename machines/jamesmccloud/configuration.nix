@@ -33,11 +33,18 @@
     package = pkgs.callPackage ../../modules/caddy/default.nix {};
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
+
+    globalConfig = ''
+      debug
+    '';
     
-    # virtualHosts = {
-    #   "brennonloveless.com" = {
-    #
-    #   };
-    # };
+    virtualHosts = {
+      "localhost" = {
+        extraConfig = ''
+          tls internal
+          respond "Localhost"
+        '';
+      };
+    };
   };
 }
