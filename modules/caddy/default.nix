@@ -46,6 +46,7 @@ buildGoModule {
 
   overrideModAttrs = (_: {
     preBuild = ''
+      echo '${main}' > cmd/caddy/main.go
       go get github.com/caddy-dns/cloudflare@${cloudflare_commit}
     '';
 
@@ -55,6 +56,11 @@ buildGoModule {
   postPatch = ''
     echo '${main}' > cmd/caddy/main.go
     cat cmd/caddy/main.go
+  '';
+
+   postConfigure = ''
+    cp vendor/go.sum ./
+    cp vendor/go.mod ./
   '';
 
   subPackages = [ "cmd/caddy" ];
