@@ -28,20 +28,20 @@
     pkgs.cntr
   ];
 
-  # services.caddy = {
-  #   enable = true;
-  #   package = pkgs.callPackage ../../modules/caddy/derivation.nix {
-  #     plugins = [
-  #       "github.com/caddy-dns/cloudflare"
-  #     ];
-  #   };
-  #   acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
-  #   email = "brennon.loveless@gmail.com";
-  #
-  #   virtualHosts = {
-  #     "brennonloveless.com" = {
-  #
-  #     };
-  #   };
-  # };
+  services.caddy = {
+    enable = true;
+    package = pkgs.callPackage ../../modules/caddy/derivation.nix {
+      plugins = [
+        "github.com/caddy-dns/cloudflare"
+      ];
+    };
+    acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
+    email = "brennon.loveless@gmail.com";
+
+    virtualHosts = {
+      "brennonloveless.com" = {
+
+      };
+    };
+  };
 }
