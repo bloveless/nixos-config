@@ -30,11 +30,7 @@
 
   services.caddy = {
     enable = true;
-    package = pkgs.callPackage ../../modules/caddy/derivation.nix {
-      plugins = [
-        "github.com/caddy-dns/cloudflare"
-      ];
-    };
+    package = pkgs.callPackage ../../modules/caddy/default.nix {};
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
 
