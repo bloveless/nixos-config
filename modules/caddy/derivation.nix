@@ -41,6 +41,7 @@ in buildGo119Module {
 
   overrideModAttrs = (_: {
     preBuild = "echo '${main}' > cmd/caddy/main.go";
+    preInstall = "go get github.com/caddy-dns/cloudflare";
     postInstall = "cp go.sum go.mod $out/ && ls $out/";
   });
 
