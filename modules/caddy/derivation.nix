@@ -30,7 +30,8 @@ in buildGo119Module {
 
   src = fetchFromGitHub {
     owner = "caddyserver";
-    repo = "caddy";
+    # repo = "caddy";
+    repo = "dist";
     rev = "v${version}";
     hash = "sha256-3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
   };
