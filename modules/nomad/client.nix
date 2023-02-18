@@ -25,9 +25,21 @@ with lib;
         verify_server_hostname = true
 
         ca_file = "/etc/consul.d/certs/consul-agent-ca.pem"
+        cert_file = "/etc/consul.d/certs/homelab01-server-consul-0.pem"
+        key_file = "/etc/consul.d/certs/homelab01-server-consul-0-key.pem"
 
         auto_encrypt {
-          tls = true
+          allow_tls = true
+        }
+
+        acl {
+          enabled = true
+          default_policy = "allow"
+          enable_token_persistence = true
+        }
+
+        performance {
+          raft_multiplier = 1
         }
 
         retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
@@ -54,9 +66,9 @@ with lib;
           enabled = true;
         };
 
-        consul = {
-          token = nomad.consul_client_token;
-        };
+        # consul = {
+        #   token = nomad.consul_client_token;
+        # };
       };
     };
   };

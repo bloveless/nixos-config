@@ -32,17 +32,17 @@ with lib;
           allow_tls = true
         }
 
-        retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
-
         acl {
           enabled = true
-          default_policy = "deny"
+          default_policy = "allow"
           enable_token_persistence = true
         }
 
         performance {
           raft_multiplier = 1
         }
+
+        retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
       '';
       
       "consul.d/server.hcl".text = ''
@@ -60,7 +60,7 @@ with lib;
         }
 
         ports {
-          grpc_tls = 8503
+          grpc = 8502
         }
       '';
 
@@ -83,13 +83,13 @@ with lib;
           bootstrap_expect = 3;
         };
 
-        acl = {
-          enabled = true;
-        };
+        # acl = {
+        #   enabled = true;
+        # };
 
-        consul = {
-          token = nomad.consul_server_token;
-        };
+        # consul = {
+        #   token = nomad.consul_server_token;
+        # };
       };
     };
   };
