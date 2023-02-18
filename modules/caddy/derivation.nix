@@ -1,4 +1,4 @@
-{ lib, buildGo117Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
+{ lib, buildGo119Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
 let
   version = "2.5.1";
   dist = fetchFromGitHub {
@@ -21,7 +21,7 @@ let
     	caddycmd.Main()
     }
   '';
-in buildGo117Module {
+in buildGo119Module {
   pname = "caddy";
   inherit version;
   runVend = true;
