@@ -14,8 +14,8 @@
 		};
 	}; in [
 		(commonMountOptions // {
-			what = "192.168.4.245:/volume1/k8s/media-server/plex/data/library";
-			where = "/mnt/media";
+			what = "192.168.4.245:/volume1/k8s";
+			where = "/mnt/storage";
 		})
 	];
 
@@ -25,6 +25,6 @@
 			TimeoutIdleSec = "600";
 		};
 	}; in [
-		(commonAutoMountOptions // { where = "/mnt/media"; })
+		(commonAutoMountOptions // { where = "/mnt/storage"; })
 	];
 }
