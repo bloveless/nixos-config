@@ -41,6 +41,10 @@ buildGoModule {
 
   vendorHash = "sha256-toi6efYZobjDV3YPT9seE/WZAzNaxgb1ioVG4txcuXM=";
 
+  overrideModAttrs = (_: {
+    preBuild = "echo '${main}' > cmd/caddy/main.go";
+  });
+
   subPackages = [ "cmd/caddy" ];
 
   ldflags = [
