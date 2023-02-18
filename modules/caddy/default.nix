@@ -48,6 +48,8 @@ buildGoModule {
     preBuild = ''
       go get github.com/caddy-dns/cloudflare@${cloudflare_commit}
     '';
+
+    postInstall = "cp go.sum go.mod $out/ && ls $out/";
   });
 
   postPatch = ''
