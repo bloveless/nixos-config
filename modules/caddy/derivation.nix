@@ -46,6 +46,7 @@ in buildGo119Module {
 
   postPatch = ''
     echo '${main}' > cmd/caddy/main.go
+    go get github.com/caddy-dns/cloudflare
     cat cmd/caddy/main.go
   '';
 
