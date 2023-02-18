@@ -35,7 +35,7 @@
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
 
-    configFile = pkgs.writeTextDir "Caddyfile" ''
+    configFile = pkgs.writeTextFile "Caddyfile" ''
       {
         debug
         email brennon.loveless@gmail.com
