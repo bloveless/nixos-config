@@ -6,10 +6,6 @@
 
 let
    configFile = pkgs.writeText "Caddyfile" ''
-{
-	email brennon.loveless@gmail.com
-}
-
 localhost {
 	tls internal
 	respond "Localhost"
