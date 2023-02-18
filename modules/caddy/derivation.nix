@@ -32,7 +32,7 @@ in buildGo119Module {
     owner = "caddyserver";
     repo = "caddy";
     rev = "v${version}";
-    hash = "sha256-s3vfTOdjIEs9ds9EtDbBpmTwPbkDkNohacUtrReZ050=";
+    hash = "sha256-3a3+nFHmGONvL/TyQRqgJtrSDIn0zdGy9YwhZP17mU0=";
   };
 
   vendorSha256 = "sha256:082yh6rqr41xwg2xpqg2sdms9m7bw68bc44bgg3xwfbgdbzrs0ni";
