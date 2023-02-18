@@ -21,7 +21,7 @@ let
     	caddycmd.Main()
     }
   '';
-in buildGo117Module {
+in buildGo119Module {
   pname = "caddy";
   inherit version;
   runVend = true;
