@@ -1,6 +1,6 @@
 { lib, buildGo119Module, fetchFromGitHub, nixosTests, plugins ? [ ], pkgs }:
 let
-  version = "2.5.1";
+  version = "2.6.4";
   dist = fetchFromGitHub {
     owner = "caddyserver";
     repo = "dist";
