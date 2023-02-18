@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 
-let {
+let
    configFile = pkgs.writeText "Caddyfile" ''
     {
       debug
@@ -265,7 +265,6 @@ let {
        reverse_proxy http://192.168.5.202:9998
     }
   '';
-}
 in {
   imports = [
     ./hardware-configuration.nix
