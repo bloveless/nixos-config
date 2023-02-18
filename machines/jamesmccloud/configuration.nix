@@ -6,7 +6,6 @@
 
 let
    configFile = pkgs.writeText "Caddyfile" ''
-# vim: set ts=4 sw=4 tw=4 noet :
 {
 	debug
 	email brennon.loveless@gmail.com
