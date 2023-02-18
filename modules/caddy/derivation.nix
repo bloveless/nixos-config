@@ -6,7 +6,7 @@ let
     repo = "dist";
     rev = "v${version}";
     sha256 = "sha256:1nlphjg5wh5drpwkm4cczrkxdzbv72ll7hp5x7z6ww8pzz3q10b3";
-  }
+  };
   imports = lib.flip lib.concatMapStrings plugins (pkg: "	_ \"${pkg}\"\n");
   main = ''
     package main
