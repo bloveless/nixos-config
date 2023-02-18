@@ -8,6 +8,7 @@
 }:
 let
   version = "2.6.4";
+  cloudflare_commit = "ed330a80c094fe73a59b5d8abc2624222550cc7e";
   dist = fetchFromGitHub {
     owner = "caddyserver";
     repo = "dist";
@@ -19,8 +20,10 @@ let
 
     import (
     	caddycmd "github.com/caddyserver/caddy/v2/cmd"
-    	_ "github.com/caddyserver/caddy/v2/modules/standard"
+
+    	// plug in Caddy modules here
     	_ "github.com/caddy-dns/cloudflare"
+    	_ "github.com/caddyserver/caddy/v2/modules/standard"
     )
 
     func main() {
@@ -43,8 +46,7 @@ buildGoModule {
 
   overrideModAttrs = (_: {
     preBuild = ''
-      go get github.com/caddy-dns/cloudflare
-      echo '${main}' > cmd/caddy/main.go
+      go get github.com/caddy-dns/cloudflare@${cloudflare_commit}
     '';
   });
 
