@@ -32,7 +32,7 @@ let
   '';
 in
 buildGoModule {
-  pname = "caddy";
+  pname = "jbl-caddy";
   inherit version;
 
   src = fetchFromGitHub {
