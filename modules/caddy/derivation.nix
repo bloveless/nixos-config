@@ -40,13 +40,15 @@ in buildGo119Module {
   nativeBuildInputs = [ pkgs.breakpointHook ];
 
   overrideModAttrs = (_: {
-    preBuild = "echo '${main}' > cmd/caddy/main.go";
+    preBuild = ''
+      echo '${main}' > cmd/caddy/main.go
+      go get github.com/caddy-dns/cloudflare
+    '';
     postInstall = "cp go.sum go.mod $out/ && ls $out/";
   });
 
   postPatch = ''
     echo '${main}' > cmd/caddy/main.go
-    go get github.com/caddy-dns/cloudflare
     cat cmd/caddy/main.go
   '';
 
