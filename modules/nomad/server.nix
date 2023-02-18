@@ -72,7 +72,7 @@ with lib;
     };
 
     services.nomad = with import ./secrets.nix; {
-      enable = false;
+      enable = true;
       package = pkgs.nomad_1_4;
       enableDocker = false;
       settings = {
