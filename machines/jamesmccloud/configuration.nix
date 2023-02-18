@@ -33,11 +33,11 @@
     package = pkgs.callPackage ../../modules/caddy/default.nix {};
     acmeCA = "https://acme-v02.api.letsencrypt.org/directory";
     email = "brennon.loveless@gmail.com";
-
-    virtualHosts = {
-      "brennonloveless.com" = {
-
-      };
-    };
+    
+    # virtualHosts = {
+    #   "brennonloveless.com" = {
+    #
+    #   };
+    # };
   };
 }
