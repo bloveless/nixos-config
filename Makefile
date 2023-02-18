@@ -1,8 +1,13 @@
-all: james servers clients
+all: commit james servers clients
 
 servers: andross
 
 clients: fox falco katt
+
+commit:
+	git add .
+	git commit -m Deploying
+	git push
 
 james:
 	ssh -t james 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'

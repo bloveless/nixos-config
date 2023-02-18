@@ -67,12 +67,12 @@ with lib;
     };
 
     services.consul = {
-      enable = true;
+      enable = false;
       webUi = true;
     };
 
     services.nomad = with import ./secrets.nix; {
-      enable = true;
+      enable = false;
       package = pkgs.nomad_1_4;
       enableDocker = false;
       settings = {
