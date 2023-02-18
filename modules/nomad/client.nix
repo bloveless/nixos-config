@@ -25,12 +25,6 @@ with lib;
         verify_server_hostname = true
 
         ca_file = "/etc/consul.d/certs/consul-agent-ca.pem"
-        cert_file = "/etc/consul.d/certs/homelab01-server-consul-0.pem"
-        key_file = "/etc/consul.d/certs/homelab01-server-consul-0-key.pem"
-
-        auto_encrypt {
-          allow_tls = true
-        }
 
         acl {
           enabled = true
