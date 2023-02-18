@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+with lib;
 {
   options.cloudflared = {
     token = mkOption {
