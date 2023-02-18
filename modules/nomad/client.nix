@@ -26,6 +26,10 @@ with lib;
 
         ca_file = "/etc/consul.d/certs/consul-agent-ca.pem"
 
+        auto_encrypt {
+          tls = true
+        }
+
         acl {
           enabled = true
           default_policy = "allow"
