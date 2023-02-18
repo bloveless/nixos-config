@@ -14,6 +14,19 @@ let
     rev = "v${version}";
     hash = "sha256-SJO1q4g9uyyky9ZYSiqXJgNIvyxT5RjrpYd20YDx8ec=";
   };
+  main = ''
+    package main
+
+    import (
+    	caddycmd "github.com/caddyserver/caddy/v2/cmd"
+    	_ "github.com/caddyserver/caddy/v2/modules/standard"
+        _ "github.com/caddy-dns/cloudflare"
+    )
+
+    func main() {
+    	caddycmd.Main()
+    }
+  '';
 in
 buildGoModule {
   pname = "caddy";
