@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 let
-   configFile = pkgs.writeText "Caddyfile" ''
+   configFile = with import ./secrets.nix; pkgs.writeText "Caddyfile" ''
 {
 	debug
 	email brennon.loveless@gmail.com
@@ -22,7 +22,7 @@ localhost {
 
 *.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	@www.brennonloveless.com host www.brennonloveless.com
@@ -34,7 +34,7 @@ localhost {
 
 brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.202:9999
@@ -42,7 +42,7 @@ brennonloveless.com {
 
 brennonloveless.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.202:9999
@@ -50,7 +50,7 @@ brennonloveless.lan.brennonloveless.com {
 
 dashboard.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.54:3000
@@ -58,7 +58,7 @@ dashboard.lan.brennonloveless.com {
 
 portainer.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy https://192.168.5.15:9443 {
@@ -70,7 +70,7 @@ portainer.lan.brennonloveless.com {
 
 proxmox.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy https://192.168.5.10:8006 {
@@ -82,7 +82,7 @@ proxmox.lan.brennonloveless.com {
 
 nas.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy https://192.168.4.245:5001 {
@@ -94,7 +94,7 @@ nas.lan.brennonloveless.com {
 
 overseerr.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:5055
@@ -102,7 +102,7 @@ overseerr.lan.brennonloveless.com {
 
 radarr.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:7878
@@ -110,7 +110,7 @@ radarr.lan.brennonloveless.com {
 
 sonarr.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:8989
@@ -118,7 +118,7 @@ sonarr.lan.brennonloveless.com {
 
 prowlarr.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:9696
@@ -126,7 +126,7 @@ prowlarr.lan.brennonloveless.com {
 
 nzbget.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:6789
@@ -134,7 +134,7 @@ nzbget.lan.brennonloveless.com {
 
 qbittorrent.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.17:8080
@@ -142,7 +142,7 @@ qbittorrent.lan.brennonloveless.com {
 
 fileflows.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.54:5000
@@ -150,7 +150,7 @@ fileflows.lan.brennonloveless.com {
 
 grafana.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.105:3000
@@ -158,7 +158,7 @@ grafana.lan.brennonloveless.com {
 
 prometheus.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.105:9090
@@ -166,7 +166,7 @@ prometheus.lan.brennonloveless.com {
 
 notes.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.104:8080
@@ -174,7 +174,7 @@ notes.lan.brennonloveless.com {
 
 authelia.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.15:9091
@@ -182,7 +182,7 @@ authelia.lan.brennonloveless.com {
 
 outline.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.54:3001
@@ -190,7 +190,7 @@ outline.lan.brennonloveless.com {
 
 minio.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.4.245:9001
@@ -198,7 +198,7 @@ minio.lan.brennonloveless.com {
 
 minio-api.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.4.245:9000
@@ -206,7 +206,7 @@ minio-api.lan.brennonloveless.com {
 
 speedtest-tracker.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy https://192.168.5.104:8443 {
@@ -218,7 +218,7 @@ speedtest-tracker.lan.brennonloveless.com {
 
 openspeedtest.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.104:3000
@@ -230,7 +230,7 @@ omada.lan.brennonloveless.com {
 
 omada.lan.brennonloveless.com:8043 {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy https://192.168.5.104:8043 {
@@ -243,7 +243,7 @@ omada.lan.brennonloveless.com:8043 {
 
 consul.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.20:8500
@@ -251,7 +251,7 @@ consul.lan.brennonloveless.com {
 
 nomad.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.20:4646
@@ -259,7 +259,7 @@ nomad.lan.brennonloveless.com {
 
 fabio.lan.brennonloveless.com {
 	tls {
-		dns cloudflare  {{ cloudflare_dns_api_key }}
+		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.202:9998
