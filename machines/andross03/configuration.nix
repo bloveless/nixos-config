@@ -9,8 +9,8 @@
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
-    # ../../modules/nomad/base.nix
-    # ../../modules/nomad/server.nix
+    ../../modules/nomad/base.nix
+    ../../modules/nomad/server.nix
   ];
 
   consul.ipAddress = "192.168.5.108";
