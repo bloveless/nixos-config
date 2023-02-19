@@ -6,6 +6,14 @@
     consul
   ];
 
+  systemd.services.nomad = {
+    serviceConfig = {
+      DynamicUser = false;
+      User = "root";
+      Group = "root";
+    }
+  };
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     4646 # nomad http api
@@ -35,14 +43,5 @@
   networking.firewall.allowedUDPPortRanges = [
     { from = 21000; to = 21255; } # consul proxy sidecar
   ];
-
-  users.groups.nomad = {};
-  users.users.nomad = {
-    isNormalUser = true;
-    extraGroups = [];
-    group = "nomad";
-    packages = with pkgs; [];
-    openssh.authorizedKeys.keys = [];
-  };
 }
 
