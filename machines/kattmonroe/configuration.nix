@@ -10,11 +10,15 @@
     ../../modules/base/configuration.nix
     ../../modules/nfs/media.nix
     ../../modules/users/brennon.nix
-    ../../modules/nomad/base.nix { secrets = import ./secrets.nix }
-    ../../modules/nomad/client.nix { secrets = import ./secrets.nix }
+    ../../modules/nomad/base.nix
+    ../../modules/nomad/client.nix
   ];
 
-  consul.ipAddress = "192.168.5.107";
+  consul = with import ./secrets.nix; {
+    ipAddress = "192.168.5.107";
+    consulAgentCA = consul."consul-agent-ca.pem";
+    encryptionKey = consul.encryption_key;
+  };
 
   networking.hostName = "kattmonroe"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {

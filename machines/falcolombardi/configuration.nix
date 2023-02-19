@@ -14,7 +14,11 @@
     ../../modules/nomad/client.nix
   ];
 
-  consul.ipAddress = "192.168.5.56";
+  consul = with import ./secrets.nix; {
+    ipAddress = "192.168.5.56";
+    consulAgentCA = consul."consul-agent-ca.pem";
+    encryptionKey = consul.encryption_key;
+  };
 
   networking.hostName = "falcolombardi"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {

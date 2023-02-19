@@ -7,19 +7,7 @@ with lib;
         type = types.str;
       };
 
-      consulAgentCAKey = mkOption {
-        type = types.str;
-      };
-
       consulAgentCA = mkOption {
-        type = types.str;
-      };
-
-      homelab01ServerConsul0Key = mkOption {
-        type = types.str;
-      };
-
-      homelab01ServerConsul0 = mkOption {
         type = types.str;
       };
 
@@ -31,13 +19,7 @@ with lib;
 
   config = {
     environment.etc = {
-      "consul.d/certs/consul-agent-ca-key.pem".text = config.consul.consulAgentCAKey;
-
       "consul.d/certs/consul-agent-ca.pem".text = config.consul.consulAgentCA;
-
-      "consul.d/certs/homelab01-server-consul-0-key.pem".text = config.consul.homelab01ServerConsul0Key;
-
-      "consul.d/certs/homelab01-server-consul-0.pem".text = config.consul.homelab01ServerConsul0;
 
       "consul.d/consul.hcl".text = ''
         datacenter = "homelab01"

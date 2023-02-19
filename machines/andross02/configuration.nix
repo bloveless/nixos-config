@@ -14,7 +14,7 @@
   ];
 
   consul = with import ./secrets.nix; {
-    ipAddress = "192.168.5.20";
+    ipAddress = "192.168.5.57";
     consulAgentCAKey = consul."consul-agent-ca-key.pem";
     consulAgentCA = consul."consul-agent-ca.pem";
     homelab01ServerConsul0Key = consul."homelab01-server-consul-0-key.pem";
