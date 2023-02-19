@@ -32,27 +32,27 @@
 
   services.dnsmasq = {
     enable = true;
-	alwaysKeepRunning = true;
-	extraConfig = ''
-	  interface=ens18
+    alwaysKeepRunning = true;
+    resolveLocalQueries = true;
+    servers = [ "1.1.1.1" "1.0.0.1" ];
+    extraConfig = ''
+      interface=ens18
       bind-dynamic
-      
+
       # never forward addresses in the non-routed address spaces
       domain-needed
-      
+
       # query with each server strictly in the order in resolv.conf
       bogus-priv
-      
+          
       # query with each server strictly in the order in [resolv.conf]
       strict-order
-      
+
       # add domain name automatically to hostnames
       expand-hosts
-      
+
       # add internal domain
       domain=lan.brennonloveless.com
-	'';
-	resolveLocalQueries = true;
-	servers = [ "1.1.1.1" "1.0.0.1" ];
-  }
+    '';
+  };
 }
