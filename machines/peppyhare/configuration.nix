@@ -21,8 +21,8 @@
   networking.nameservers = [ "192.168.4.1" ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 53 ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
 
   services.keepalived = with import ./secrets.nix; {
     enable = true;
