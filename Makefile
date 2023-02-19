@@ -1,8 +1,10 @@
-all: commit james servers clients
+all: commit james servers clients dnsmasq
 
 servers: andross
 
 clients: fox falco katt
+
+dnsmasq: slippy peppy
 
 commit:
 	git add .
