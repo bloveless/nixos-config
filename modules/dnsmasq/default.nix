@@ -1,33 +1,33 @@
 { config, lib, pkgs, ... }:
 {
   networking.extraHosts = ''
-    192.168.5.58\tauthelia
-    192.168.5.58\tconsul
-    192.168.5.58\tnomad
-    192.168.5.58\tfabio
-    192.168.5.58\tbrennonloveless
-    192.168.5.58\tdashboard
-    192.168.5.58\tfileflows
-    192.168.5.58\tgrafana
-    192.168.5.58\tminio-api
-    192.168.5.58\tminio
-    192.168.5.58\tnas
-    192.168.5.58\tnotes
-    192.168.5.58\tnzbget
-    192.168.5.58\tomada
-    192.168.5.58\topenspeedtest
-    192.168.5.58\toutline
-    192.168.5.58\toverseerr
-    192.168.5.58\tportainer
-    192.168.5.15\tpostgres
-    192.168.5.58\tprometheus
-    192.168.5.58\tprowlarr
-    192.168.5.58\tproxmox
-    192.168.5.58\tqbittorrent
-    192.168.5.58\tradarr
-    192.168.5.15\tredis
-    192.168.5.58\tsonarr
-    192.168.5.58\tspeedtest-tracker
+    192.168.5.58	authelia
+    192.168.5.58	consul
+    192.168.5.58	nomad
+    192.168.5.58	fabio
+    192.168.5.58	brennonloveless
+    192.168.5.58	dashboard
+    192.168.5.58	fileflows
+    192.168.5.58	grafana
+    192.168.5.58	minio-api
+    192.168.5.58	minio
+    192.168.5.58	nas
+    192.168.5.58	notes
+    192.168.5.58	nzbget
+    192.168.5.58	omada
+    192.168.5.58	openspeedtest
+    192.168.5.58	outline
+    192.168.5.58	overseerr
+    192.168.5.58	portainer
+    192.168.5.15	postgres
+    192.168.5.58	prometheus
+    192.168.5.58	prowlarr
+    192.168.5.58	proxmox
+    192.168.5.58	qbittorrent
+    192.168.5.58	radarr
+    192.168.5.15	redis
+    192.168.5.58	sonarr
+    192.168.5.58	speedtest-tracker
   '';
 
   services.dnsmasq = {
