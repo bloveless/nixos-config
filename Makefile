@@ -26,3 +26,9 @@ andross:
 	ssh -t andross02 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
 	ssh -t andross03 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
 
+slippy:
+	ssh -t slippy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
+
+peppy:
+	ssh -t peppy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
+
