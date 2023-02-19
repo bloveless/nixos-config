@@ -31,17 +31,17 @@ with lib;
 
   config = {
     environment.etc = {
-      "consul.d/certs/consul-agent-ca-key.pem".text = config.consul."consul-agent-ca-key.pem";
+      "consul.d/certs/consul-agent-ca-key.pem".text = config.consul.consulAgentCAKey;
 
-      "consul.d/certs/consul-agent-ca.pem".text = config.consul."consul-agent-ca.pem";
+      "consul.d/certs/consul-agent-ca.pem".text = config.consul.consulAgentCA;
 
-      "consul.d/certs/homelab01-server-consul-0-key.pem".text = config.consul."homelab01-server-consul-0-key.pem";
+      "consul.d/certs/homelab01-server-consul-0-key.pem".text = config.consul.homelab01ServerConsul0Key;
 
-      "consul.d/certs/homelab01-server-consul-0.pem".text = config.consul."homelab01-server-consul-0.pem";
+      "consul.d/certs/homelab01-server-consul-0.pem".text = config.consul.homelab01ServerConsul0;
 
       "consul.d/consul.hcl".text = ''
         datacenter = "homelab01"
-        encrypt = "${config.consul.encryption_key}"
+        encrypt = "${config.consul.encryptionKey}"
         verify_incoming = true
         verify_outgoing = true
         verify_server_hostname = true
