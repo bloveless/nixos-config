@@ -1,25 +1,47 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
-  options.consul = {
-    ipAddress = mkOption {
-      type = types.str;
+  options = {
+    consul = {
+      ipAddress = mkOption {
+        type = types.str;
+      };
+
+      consulAgentCAKey = mkOption {
+        type = types.str;
+      };
+
+      consulAgentCA = mkOption {
+        type = types.str;
+      };
+
+      homelab01ServerConsul0Key = mkOption {
+        type = types.str;
+      };
+
+      homelab01ServerConsul0 = mkOption {
+        type = types.str;
+      };
+
+      encryptionKey = mkOption {
+        type = types.str;
+      };
     };
   };
 
   config = {
-    environment.etc = with import ./secrets.nix; {
-      "consul.d/certs/consul-agent-ca-key.pem".text = consul."consul-agent-ca-key.pem";
+    environment.etc = {
+      "consul.d/certs/consul-agent-ca-key.pem".text = config.consul."consul-agent-ca-key.pem";
 
-      "consul.d/certs/consul-agent-ca.pem".text = consul."consul-agent-ca.pem";
+      "consul.d/certs/consul-agent-ca.pem".text = config.consul."consul-agent-ca.pem";
 
-      "consul.d/certs/homelab01-server-consul-0-key.pem".text = consul."homelab01-server-consul-0-key.pem";
+      "consul.d/certs/homelab01-server-consul-0-key.pem".text = config.consul."homelab01-server-consul-0-key.pem";
 
-      "consul.d/certs/homelab01-server-consul-0.pem".text = consul."homelab01-server-consul-0.pem";
+      "consul.d/certs/homelab01-server-consul-0.pem".text = config.consul."homelab01-server-consul-0.pem";
 
       "consul.d/consul.hcl".text = ''
         datacenter = "homelab01"
-        encrypt = "${consul.encryption_key}"
+        encrypt = "${config.consul.encryption_key}"
         verify_incoming = true
         verify_outgoing = true
         verify_server_hostname = true
@@ -53,7 +75,7 @@ with lib;
       webUi = true;
     };
 
-    services.nomad = with import ./secrets.nix; {
+    services.nomad = {
       enable = true;
       package = pkgs.nomad_1_4;
       enableDocker = true;
@@ -63,10 +85,6 @@ with lib;
         client = {
           enabled = true;
         };
-
-        # consul = {
-        #   token = nomad.consul_client_token;
-        # };
       };
     };
   };
