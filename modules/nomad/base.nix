@@ -8,7 +8,6 @@
 
   systemd.services.nomad = {
     serviceConfig = {
-      DynamicUser = false;
       User = "root";
       Group = "root";
     };
