@@ -7,7 +7,6 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.defaultGateway = "192.168.4.1";
-  networking.nameservers = [ "192.168.5.201" ];
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";

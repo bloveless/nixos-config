@@ -21,6 +21,7 @@
     address = "192.168.5.107";
     prefixLength = 22;
   } ];
+  networking.nameservers = [ "192.168.5.201" ];
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [

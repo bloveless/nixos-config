@@ -20,6 +20,7 @@
     address = "192.168.5.57";
     prefixLength = 22;
   } ];
+  networking.nameservers = [ "192.168.5.201" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
