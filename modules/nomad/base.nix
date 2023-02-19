@@ -11,7 +11,7 @@
       DynamicUser = false;
       User = "root";
       Group = "root";
-    }
+    };
   };
 
   # Open ports in the firewall.
