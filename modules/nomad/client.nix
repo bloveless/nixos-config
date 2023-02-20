@@ -79,6 +79,9 @@ with lib;
       package = pkgs.nomad_1_4;
       enableDocker = true;
       dropPrivileges = false;
+      extraSettingsPaths = [
+        "/etc/nomad.d"
+      ];
     };
   };
 }
