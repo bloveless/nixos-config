@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
-    ../../modules/nfs/media.nix
+    ../../modules/storage/nfs.nix
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
     ../../modules/nomad/client.nix

@@ -15,7 +15,7 @@
 	}; in [
 		(commonMountOptions // {
 			what = "192.168.4.245:/volume1/homelab";
-			where = "/mnt/storage";
+			where = "/mnt/storage-nfs";
 		})
 	];
 
@@ -25,6 +25,6 @@
 			TimeoutIdleSec = "600";
 		};
 	}; in [
-		(commonAutoMountOptions // { where = "/mnt/storage"; })
+		(commonAutoMountOptions // { where = "/mnt/storage-nfs"; })
 	];
 }
