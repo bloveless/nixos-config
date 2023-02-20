@@ -50,6 +50,23 @@ with lib;
       "consul.d/client.hcl".text = ''
         bind_addr = "${config.consul.ipAddress}"
       '';
+      "nomad.d/client.hcl".text = ''
+        datacenter = "homelab01"
+
+        client {
+          enabled = true
+        }
+        
+        plugin "docker" {
+          config {
+            allow_privileged = true
+            
+            volumes {
+                enabled = true
+            }
+          }
+        }
+      '';
     };
 
     services.consul = {
@@ -62,24 +79,6 @@ with lib;
       package = pkgs.nomad_1_4;
       enableDocker = true;
       dropPrivileges = false;
-      settings = {
-        datacenter = "homelab01";
-
-        client = {
-          enabled = true;
-        };
-        
-        plugin = {
-          docker = {
-            config = {
-              allow_privileged = true;
-              volumes = {
-                enabled = true;
-              };
-            };
-          };
-        };
-      };
     };
   };
 }

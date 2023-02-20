@@ -85,7 +85,14 @@ with lib;
           grpc_tls = 8503
         }
       '';
+      "nomad.d/server.hcl".text = ''
+        datacenter = "homelab01"
 
+        server {
+          enabled = true
+          bootstrap_expect = 3
+        }
+      '';
     };
 
     services.consul = {
@@ -98,14 +105,6 @@ with lib;
       package = pkgs.nomad_1_4;
       enableDocker = false;
       dropPrivileges = false;
-      settings = {
-        datacenter = "homelab01";
-
-        server = {
-          enabled = true;
-          bootstrap_expect = 3;
-        };
-      };
     };
   };
 }
