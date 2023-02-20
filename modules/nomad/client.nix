@@ -61,11 +61,22 @@ with lib;
       enable = true;
       package = pkgs.nomad_1_4;
       enableDocker = true;
+      dropPrivileges = false;
       settings = {
         datacenter = "homelab01";
 
         client = {
           enabled = true;
+        };
+        
+        plugin = {
+          name = "docker";
+          config = {
+            allow_privileged = true;
+            volumes = {
+              enabled = true;
+            };
+          };
         };
       };
     };

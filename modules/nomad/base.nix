@@ -6,13 +6,6 @@
     consul
   ];
 
-  systemd.services.nomad = {
-    serviceConfig = {
-      User = "root";
-      Group = "root";
-    };
-  };
-
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     4646 # nomad http api
