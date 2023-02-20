@@ -18,6 +18,11 @@
       fsType = "btrfs";
     };
 
+  fileSystems."/mnt/storage-local" =
+    { device = "/dev/disk/by-uuid/3def53bd-af86-436e-9d82-a186ad2e186a";
+      fsType = "btrfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ebbcec4e-0a7b-40ae-aa58-39d3c396c79d"; }
     ];
