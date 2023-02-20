@@ -70,11 +70,12 @@ with lib;
         };
         
         plugin = {
-          name = "docker";
-          config = {
-            allow_privileged = true;
-            volumes = {
-              enabled = true;
+          docker = {
+            config = {
+              allow_privileged = true;
+              volumes = {
+                enabled = true;
+              };
             };
           };
         };
