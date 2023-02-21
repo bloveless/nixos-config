@@ -14,6 +14,17 @@
     ../../modules/nomad/client.nix
   ];
 
+  environment.etc = {
+    "nomad.d/volumes.hcl".text = ''
+      client {
+        host_volume "postgres" {
+          path = "/mnt/storage-local/postgres"
+          read_only = false
+        }
+      }
+    '';
+  };
+
   consul = with import ./secrets.nix; {
     ipAddress = "192.168.5.19";
     consulAgentCA = consul."consul-agent-ca.pem";
