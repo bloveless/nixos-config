@@ -17,8 +17,8 @@
   environment.etc = {
     "nomad.d/volumes.hcl".text = ''
       client {
-        host_volume "postgres" {
-          path = "/mnt/storage-local/postgres"
+        host_volume "postgres-data" {
+          path = "/mnt/storage-local/postgres/data"
           read_only = false
         }
       }
