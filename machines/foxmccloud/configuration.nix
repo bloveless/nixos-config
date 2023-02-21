@@ -42,6 +42,7 @@
   networking.firewall.allowedTCPPorts = [
     9999 # fabio lb
     9998 # fabio ui
+    5432 # postgres
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
