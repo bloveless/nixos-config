@@ -145,7 +145,7 @@ fileflows.lan.brennonloveless.com {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy http://192.168.5.54:5000
+	reverse_proxy http://192.168.5.202:9999
 }
 
 grafana.lan.brennonloveless.com {
