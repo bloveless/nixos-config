@@ -16,6 +16,7 @@
     wget
     curl
     git
+    libva-utils
   ];
 
   # Enable the OpenSSH daemon.
