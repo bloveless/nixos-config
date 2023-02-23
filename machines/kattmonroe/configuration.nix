@@ -15,6 +15,14 @@
   ];
 
   environment.etc = {
+    "nomad.d/volumes.hcl".text = ''
+      client {
+        host_volume "fileflows-node" {
+          path = "/mnt/storage-nfs/media-server/fileflows-node"
+          read_only = false
+        }
+      }
+    '';
     "nomad.d/extra.hcl".text = ''
       client {
         meta {
