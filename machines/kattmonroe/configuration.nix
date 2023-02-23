@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
+    ../../modules/base/igpu.nix
     ../../modules/storage/nfs.nix
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix

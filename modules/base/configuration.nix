@@ -18,14 +18,6 @@
     git
   ];
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-    ];
-  };
-
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
