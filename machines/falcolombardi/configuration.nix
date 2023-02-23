@@ -14,6 +14,16 @@
     ../../modules/nomad/client.nix
   ];
 
+  environment.etc = {
+    "nomad.d/extra.hcl".text = ''
+      client {
+        meta {
+          gpu = "true"
+        }
+      }
+    '';
+  };
+
   consul = with import ./secrets.nix; {
     ipAddress = "192.168.5.56";
     consulAgentCA = consul."consul-agent-ca.pem";
