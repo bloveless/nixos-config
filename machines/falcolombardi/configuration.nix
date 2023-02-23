@@ -17,8 +17,16 @@
   environment.etc = {
     "nomad.d/volumes.hcl".text = ''
       client {
-        host_volume "fileflows-server" {
-          path = "/mnt/storage-nfs/media-server/fileflows-server"
+        host_volume "fileflows-server-data" {
+          path = "/mnt/storage-nfs/media-server/fileflows-server/Data"
+          read_only = false
+        }
+        host_volume "fileflows-server-logs" {
+          path = "/mnt/storage-nfs/media-server/fileflows-server-logs"
+          read_only = false
+        }
+        host_volume "fileflows-server-temp" {
+          path = "/mnt/storage-nfs/media-server/fileflows-server-temp"
           read_only = false
         }
       }
