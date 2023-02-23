@@ -22,11 +22,11 @@
           read_only = false
         }
         host_volume "fileflows-server-logs" {
-          path = "/mnt/storage-nfs/media-server/fileflows-server-logs"
+          path = "/mnt/storage-nfs/media-server/fileflows-server/Logs"
           read_only = false
         }
         host_volume "fileflows-server-temp" {
-          path = "/mnt/storage-nfs/media-server/fileflows-server-temp"
+          path = "/mnt/storage-nfs/media-server/fileflows-server/Temp"
           read_only = false
         }
       }
