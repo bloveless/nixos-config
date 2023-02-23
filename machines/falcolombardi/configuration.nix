@@ -30,6 +30,10 @@
           path = "/mnt/storage-nfs/media-server/fileflows-server/Temp"
           read_only = false
         }
+        host_volume "media" {
+          path = "/mnt/storage-nfs/media-server/plex/data/library"
+          read_only = false
+        }
       }
     '';
     "nomad.d/extra.hcl".text = ''

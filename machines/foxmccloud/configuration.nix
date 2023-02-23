@@ -21,6 +21,10 @@
           path = "/mnt/storage-local/postgres/data"
           read_only = false
         }
+        host_volume "media" {
+          path = "/mnt/storage-nfs/media-server/plex/data/library"
+          read_only = false
+        }
       }
     '';
   };
