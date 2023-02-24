@@ -34,6 +34,14 @@
           path = "/mnt/storage-nfs/media-server/plex/data/library"
           read_only = false
         }
+        host_volume "omada-controller-data" {
+          path = "/mnt/storage-nfs/omada-controller/data"
+          read_only = false
+        }
+        host_volume "omada-controller-logs" {
+          path = "/mnt/storage-nfs/omada-controller/logs"
+          read_only = false
+        }
       }
     '';
     "nomad.d/extra.hcl".text = ''
