@@ -229,7 +229,7 @@ omada.lan.brennonloveless.com {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy http://192.168.5.202:9999
+	reverse_proxy https://192.168.5.202:9999
 }
 
 
