@@ -225,19 +225,11 @@ openspeedtest.lan.brennonloveless.com {
 }
 
 omada.lan.brennonloveless.com {
-	redir https://omada.lan.brennonloveless.com:8043{url} permanent
-}
-
-omada.lan.brennonloveless.com:8043 {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy https://192.168.5.104:8043 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
+	reverse_proxy http://192.168.5.202:9999
 }
 
 
