@@ -280,13 +280,9 @@ in {
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     443 # caddy https
+    8043 # omada listens on 8043
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-
-  environment.systemPackages = with pkgs; [
-    pkgs.cntr
-  ];
-
 
   services.caddy = {
     enable = true;
