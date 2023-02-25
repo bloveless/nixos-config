@@ -55,6 +55,15 @@ with lib;
 
         client {
           enabled = true
+          chroot_env {
+            "/nix/store" = "/nix/store"
+            "/run/current-system" = "/run/current-system"
+          }
+
+          host_volume "nix-store" {
+            path = "/nix/store"
+            read_only = true
+          }
         }
         
         plugin "docker" {
