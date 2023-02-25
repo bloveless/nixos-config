@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    getent
     nomad_1_4
     consul
   ];
