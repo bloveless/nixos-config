@@ -233,13 +233,8 @@ omada.lan.brennonloveless.com:8043 {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy http://192.168.5.202:9999 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
+	reverse_proxy http://192.168.5.202:9999
 }
-
 
 consul.lan.brennonloveless.com {
 	tls {
