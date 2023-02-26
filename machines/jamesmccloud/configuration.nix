@@ -287,6 +287,7 @@ in {
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
+    80 # caddy http
     443 # caddy https
     8043 # omada listens on 8043
   ];
