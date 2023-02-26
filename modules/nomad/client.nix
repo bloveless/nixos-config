@@ -55,11 +55,6 @@ with lib;
 
         client {
           enabled = true
-
-          host_volume "wireguard-config" {
-            path = "/mnt/storage-nfs/media-server/wireguard/config"
-            read_only = false
-          }
         }
         
         plugin "docker" {
