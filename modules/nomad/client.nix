@@ -55,13 +55,9 @@ with lib;
 
         client {
           enabled = true
-          chroot_env {
-            "/nix/store" = "/nix/store"
-            "/run/current-system" = "/run/current-system"
-          }
 
-          host_volume "nix-store" {
-            path = "/nix/store"
+          host_volume "wireguard-config" {
+            path = "/mnt/storage-nfs/media-server/wireguard/config"
             read_only = true
           }
         }
