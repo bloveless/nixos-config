@@ -5,6 +5,7 @@
     getent
     nomad_1_4
     consul
+    wireguard-tools
   ];
 
   # Open ports in the firewall.
