@@ -31,10 +31,10 @@ katt:
 	ssh -t katt 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch && sudo systemctl restart nomad'
 
 slippy:
-	ssh -t slippy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch && sudo systemctl restart nomad'
+	ssh -t slippy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
 
 peppy:
-	ssh -t peppy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch && sudo systemctl restart nomad'
+	ssh -t peppy 'sudo git -C /etc/nixos pull && sudo nixos-rebuild switch'
 
 secrets:
 	scp ./machines/andross01/secrets.nix andross01:~/secrets.nix
