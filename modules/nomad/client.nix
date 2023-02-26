@@ -58,7 +58,7 @@ with lib;
 
           host_volume "wireguard-config" {
             path = "/mnt/storage-nfs/media-server/wireguard/config"
-            read_only = true
+            read_only = false
           }
         }
         
