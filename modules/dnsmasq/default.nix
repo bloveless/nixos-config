@@ -23,6 +23,7 @@
     192.168.5.58	prometheus
     192.168.5.58	prowlarr
     192.168.5.58	proxmox
+    192.168.5.58	publicip
     192.168.5.58	qbittorrent
     192.168.5.58	radarr
     192.168.5.15	redis
