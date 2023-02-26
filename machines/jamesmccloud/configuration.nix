@@ -48,6 +48,14 @@ brennonloveless.lan.brennonloveless.com {
 	reverse_proxy http://192.168.5.202:9999
 }
 
+publicip.lan.brennonloveless.com {
+	tls {
+		dns cloudflare  ${cloudflare.dns_api_key}
+	}
+
+	reverse_proxy http://192.168.5.202:9999
+}
+
 dashboard.lan.brennonloveless.com {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
