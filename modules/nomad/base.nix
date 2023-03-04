@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     getent
-    nomad_1_4
+    callPackage ./nomad.nix {}
     consul
     wireguard-tools
   ];

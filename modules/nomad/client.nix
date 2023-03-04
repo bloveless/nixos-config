@@ -77,7 +77,7 @@ with lib;
 
     services.nomad = {
       enable = true;
-      package = pkgs.nomad_1_4;
+      package = pkgs.callPackage ./nomad.nix {};
       enableDocker = true;
       dropPrivileges = false;
       extraSettingsPaths = [
