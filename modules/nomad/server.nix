@@ -107,8 +107,8 @@ in {
       package = pkgs.nomad_1_4;
       enableDocker = false;
       dropPrivileges = false;
-      extraSettingsPlugins = [ cni-plugins-1-2 ];
-      extraPackages = [ cni-plugins-1-2 ];
+      # extraSettingsPlugins = [ cni-plugins-1-2 ];
+      # extraPackages = [ cni-plugins-1-2 ];
       extraSettingsPaths = [
         "/etc/nomad.d"
       ];
