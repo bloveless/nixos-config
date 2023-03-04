@@ -15,6 +15,7 @@ in buildGo120Module (rec {
 
   src = fetchFromGitHub {
     owner = "hashicorp";
+    repo = "nomad";
     rev = "v${version}";
     inherit pname sha256;
   };
