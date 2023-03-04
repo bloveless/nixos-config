@@ -10,7 +10,7 @@ let
   vendorSha256 = "sha256-ttP7pzsIBd2S79AUcbOeVG71Mb5qK706rq5DkT41VqM=";
   attrs' = builtins.removeAttrs attrs [ "buildGoModule" "version" "sha256" "vendorSha256" ];
 
-in buildGo120Module rec {
+in buildGo120Module (rec {
   inherit pname version sha256 vendorSha256;
 
   passthru.tests.nomad = nixosTests.nomad;
@@ -36,4 +36,4 @@ in buildGo120Module rec {
     license = licenses.mpl20;
     maintainers = with maintainers; [ rushmorem pradeepchhetri endocrimes maxeaubrey techknowlogick ];
   };
-} // attrs';
+} // attrs');
