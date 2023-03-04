@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
-{
+let
+  my_nomad = pkgs.callPackage ./nomad.nix {};
+in {
   environment.systemPackages = with pkgs; [
     getent
-    callPackage ./nomad.nix
+    my_nomad
     consul
     wireguard-tools
   ];
