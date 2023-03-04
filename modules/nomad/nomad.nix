@@ -6,7 +6,7 @@
 let
   pname = "nomad";
   version = "1.5.0";
-  sha256 = "sha256-miimuWolTJ3lMY/ArnLZFu+GZv9ADdGsriXsTcEgdYc=";
+  sha256 = "sha256-xaMt57g2TV+LG5NRmIvKqg/Ljf2BFcHayuxC+Fz/9Ys=";
   vendorSha256 = "sha256-ttP7pzsIBd2S79AUcbOeVG71Mb5qK706rq5DkT41VqM=";
 
 in buildGo120Module (rec {
