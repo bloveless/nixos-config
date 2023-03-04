@@ -12,8 +12,6 @@ let
 in buildGo120Module (rec {
   inherit pname version sha256 vendorSha256;
 
-  passthru.tests.nomad = nixosTests.nomad;
-
   subPackages = [ "." ];
 
   src = fetchFromGitHub {
