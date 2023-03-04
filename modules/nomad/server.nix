@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib;
+let
+  cni-plugins-1-2 = pkgs.callPackage ./cni-plugins.nix {};
 {
   options = {
     consul = {
@@ -105,7 +107,7 @@ with lib;
       package = pkgs.nomad_1_4;
       enableDocker = false;
       dropPrivileges = false;
-      extraSettingsPlugins = [ ./cni-plugins.nix ];
+      extraSettingsPlugins = [ cni-plugins-1-2 ];
       extraSettingsPaths = [
         "/etc/nomad.d"
       ];
