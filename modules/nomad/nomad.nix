@@ -1,6 +1,7 @@
 { lib
 , buildGo120Module
 , fetchFromGitHub
+, nixosTests
 }:
 let
   pname = "nomad";
