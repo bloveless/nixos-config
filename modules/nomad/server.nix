@@ -2,7 +2,7 @@
 with lib;
 let
   cni-plugins-1-2 = pkgs.callPackage ./cni-plugins.nix {};
-{
+in {
   options = {
     consul = {
       ipAddress = mkOption {
