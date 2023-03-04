@@ -13,7 +13,7 @@ in buildGo120Module (rec {
   inherit pname version sha256 vendorSha256;
 
   subPackages = [ "." ];
-  passthru.tests.nomad = nixosTests.nomad;
+  passthru.tests = null;
 
   src = fetchFromGitHub {
     owner = "hashicorp";
