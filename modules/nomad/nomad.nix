@@ -1,7 +1,6 @@
 { lib
 , buildGo120Module
 , fetchFromGitHub
-, nixosTests
 }:
 let
   pname = "nomad";
@@ -16,9 +15,8 @@ in buildGo120Module (rec {
 
   src = fetchFromGitHub {
     owner = "hashicorp";
-    repo = pname;
     rev = "v${version}";
-    inherit sha256;
+    inherit pname sha256;
   };
 
   # ui:
