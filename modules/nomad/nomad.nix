@@ -36,4 +36,4 @@ in buildGo120Module (rec {
     license = licenses.mpl20;
     maintainers = with maintainers; [ rushmorem pradeepchhetri endocrimes maxeaubrey techknowlogick ];
   };
-} // attrs');
+} // attrs')
