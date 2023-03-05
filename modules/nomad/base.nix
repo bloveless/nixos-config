@@ -14,7 +14,7 @@ in {
     enable = true;
     package = my_nomad;
     dropPrivileges = false;
-    # extraSettingsPlugins = [ cni-plugins-1-2 ];
+    extraSettingsPlugins = [ cni-plugins ];
     extraPackages = with pkgs; [ cni-plugins ];
     extraSettingsPaths = [
       "/etc/nomad.d"
