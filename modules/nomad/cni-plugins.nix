@@ -1,7 +1,7 @@
 { lib, fetchFromGitHub, buildGoModule, nixosTests }:
 
 buildGoModule rec {
-  pname = "my-cni-plugins";
+  pname = "cni-plugins";
   version = "1.2.0";
 
   src = fetchFromGitHub {
