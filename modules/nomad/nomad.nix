@@ -13,7 +13,7 @@ in buildGo120Module (rec {
   inherit pname version sha256 vendorSha256;
 
   subPackages = [ "." ];
-  doInstallCheck = false;
+  doCheck = false;
 
   src = fetchFromGitHub {
     owner = "hashicorp";
