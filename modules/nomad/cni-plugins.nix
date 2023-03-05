@@ -3,6 +3,7 @@
 buildGoModule rec {
   pname = "cni-plugins";
   version = "1.2.0";
+  CGO_ENABLED = false;
 
   src = fetchFromGitHub {
     owner = "containernetworking";
