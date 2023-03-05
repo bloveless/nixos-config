@@ -12,8 +12,7 @@ in {
 
   services.nomad = {
     enable = true;
-    package = pkgs.callPackage ./nomad.nix {};
-    enableDocker = false;
+    package = my_nomad;
     dropPrivileges = false;
     # extraSettingsPlugins = [ cni-plugins-1-2 ];
     extraPackages = with pkgs; [ cni-plugins ];
