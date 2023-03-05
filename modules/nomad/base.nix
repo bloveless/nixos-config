@@ -1,21 +1,22 @@
 { config, pkgs, ... }:
 
 let
-  my_nomad = pkgs.callPackage ./nomad.nix {};
+  nomad-1-5 = pkgs.callPackage ./nomad.nix {};
+  cni-plugins-1-2 = pkgs.callPackage ./cni-plugins.nix {};
 in {
-  environment.systemPackages = with pkgs; [
-    getent
-    my_nomad
-    consul
-    wireguard-tools
+  environment.systemPackages = [
+    pkgs.getent
+    nomad-1-5
+    pkgs.consul
+    pkgs.wireguard-tools
   ];
 
   services.nomad = {
     enable = true;
     package = my_nomad;
     dropPrivileges = false;
-    extraSettingsPlugins = [ pkgs.cni-plugins ];
-    extraPackages = [ pkgs.cni-plugins ];
+    extraSettingsPlugins = [ cni-plugins-1-2 ];
+    extraPackages = [ cni-plugins-1-2 ];
     extraSettingsPaths = [
       "/etc/nomad.d"
     ];
