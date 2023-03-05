@@ -10,6 +10,18 @@ in {
     wireguard-tools
   ];
 
+  services.nomad = {
+    enable = true;
+    package = pkgs.callPackage ./nomad.nix {};
+    enableDocker = false;
+    dropPrivileges = false;
+    # extraSettingsPlugins = [ cni-plugins-1-2 ];
+    extraPackages = with pkgs; [ cni-plugins ];
+    extraSettingsPaths = [
+      "/etc/nomad.d"
+    ];
+  };
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     4646 # nomad http api

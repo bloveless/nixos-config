@@ -76,13 +76,7 @@ with lib;
     };
 
     services.nomad = {
-      enable = true;
-      package = pkgs.callPackage ./nomad.nix {};
       enableDocker = true;
-      dropPrivileges = false;
-      extraSettingsPaths = [
-        "/etc/nomad.d"
-      ];
     };
   };
 }
