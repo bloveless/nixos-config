@@ -13,7 +13,7 @@ buildGoModule rec {
   };
 
   deleteVendor = true;
-  vendorSha256 = "sha256-p6gvXn8v7KZMiCPj2EQlk/2au1nZ6EJlLxcMZHzlEp8=";
+  vendorSha256 = "sha256-OaNcVBiz1kWEs4JEKz7LuLbBSt4gB2CP2lF0zjCBNgI=";
 
   doCheck = false;
 
