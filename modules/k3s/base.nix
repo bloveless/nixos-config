@@ -6,7 +6,7 @@ in {
   options = {
     k3s = {
       token = lib.mkOption {
-        type = types.str;
+        type = lib.types.str;
       };
     };
   };
