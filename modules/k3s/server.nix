@@ -13,9 +13,9 @@
     };
   };
 
-  config = {
-    imports = [ ./base.nix ];
+  imports = [ ./base.nix ];
 
+  config = {
     services.k3s = {
       role = "server";
       disableAgent = true;
