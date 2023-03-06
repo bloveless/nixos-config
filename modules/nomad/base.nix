@@ -15,7 +15,7 @@ in {
     enable = true;
     package = nomad-1-5;
     dropPrivileges = false;
-    extraSettingsPlugins = [ "/opt/cni/bin" ];
+    extraSettingsPlugins = [ "/opt/cni" ];
     # extraSettingsPlugins = [ cni-plugins-1-2 ];
     # extraPackages = [ cni-plugins-1-2 ];
     extraSettingsPaths = [
