@@ -34,5 +34,5 @@
       51820 # k3s flannel wireguard
       51821 # k3s flannel wireguard ipv6
     ];
-  }
+  };
 }
