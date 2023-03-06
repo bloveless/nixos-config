@@ -14,7 +14,7 @@ in {
         type = lib.types.str;
         default = "";
       };
-    }
+    };
   };
 
   config = {
