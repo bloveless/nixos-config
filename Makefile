@@ -8,7 +8,7 @@ dnsmasq: slippy peppy
 
 commit:
 	git add .
-	git commit -m Deploying
+	git commit -m Deploying || true
 	git push
 
 james:
