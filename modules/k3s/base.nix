@@ -8,8 +8,6 @@ in {
       token = lib.mkOption {
         type = lib.types.str;
       };
-    };
-    serverAddr = {
       serverAddr = lib.mkOption {
         type = lib.types.str;
         default = "";
