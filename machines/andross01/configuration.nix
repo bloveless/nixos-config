@@ -16,6 +16,7 @@
 
   k3s = with import ./secrets.nix; {
     token = k3s.token;
+    clusterInit = true;
   };
 
   consul = with import ./secrets.nix; {
