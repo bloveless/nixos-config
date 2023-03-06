@@ -21,7 +21,7 @@ in {
       package = k3s_1_26;
       extraFlags = "--disable traefik --cluster-cidr 10.24.0.0/16";
       token = config.k3s.token;
-      serverAddr = "192.168.5.20";
+      serverAddr = "https://192.168.5.20:6443";
     };
   };
 }
