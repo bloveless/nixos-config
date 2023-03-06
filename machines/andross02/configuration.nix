@@ -11,6 +11,7 @@
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
     ../../modules/nomad/server.nix
+    ../../modules/k3s/server.nix
   ];
 
   consul = with import ./secrets.nix; {

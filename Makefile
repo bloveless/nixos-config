@@ -62,6 +62,7 @@ secrets:
 	ssh -t slippy 'sudo mv ~/secrets.nix /etc/nixos/machines/slippytoad/secrets.nix'
 	
 	scp ./machines/peppyhare/secrets.nix peppy:~/secrets.nix
+	ssh -t peppy 'sudo mv ~/secrets.nix /etc/nixos/machines/peppyhare/secrets.nix'
 
 clean-nix:
 	ssh -t andross01 'sudo nix-collect-garbage'

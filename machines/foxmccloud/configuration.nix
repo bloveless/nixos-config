@@ -12,6 +12,7 @@
     ../../modules/users/brennon.nix
     ../../modules/nomad/base.nix
     ../../modules/nomad/client.nix
+    ../../modules/k3s/agent.nix
   ];
 
   environment.etc = {
