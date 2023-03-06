@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   k3s_1_26= pkgs.callPackage ./1_26/default.nix {};
 in {
   options = {
     k3s = {
-      token = mkOption {
+      token = lib.mkOption {
         type = types.str;
       };
     };
