@@ -9,6 +9,12 @@ in {
         type = lib.types.str;
       };
     };
+    serverAddr = {
+      serverAddr = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+    }
   };
 
   config = {
@@ -21,7 +27,7 @@ in {
       package = k3s_1_26;
       extraFlags = "--disable traefik --cluster-cidr 10.24.0.0/16";
       token = config.k3s.token;
-      serverAddr = "https://192.168.5.20:6443";
+      serverAddr = config.k3s.serverAddr;
     };
   };
 }

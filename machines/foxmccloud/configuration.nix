@@ -17,6 +17,7 @@
 
   k3s = with import ./secrets.nix; {
     token = k3s.token;
+    serverAddr = "https://192.168.5.20:6443";
   };
 
   environment.etc = {
