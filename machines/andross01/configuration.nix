@@ -14,6 +14,10 @@
     ../../modules/k3s/server.nix
   ];
 
+  k3s = with import ./secrets.nix; {
+    token = k3s.token;
+  };
+
   consul = with import ./secrets.nix; {
     ipAddress = "192.168.5.20";
     consulAgentCAKey = consul."consul-agent-ca-key.pem";

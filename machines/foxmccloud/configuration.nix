@@ -15,6 +15,10 @@
     ../../modules/k3s/agent.nix
   ];
 
+  k3s = with import ./secrets.nix; {
+    token = k3s.token;
+  };
+
   environment.etc = {
     "nomad.d/volumes.hcl".text = ''
       client {
