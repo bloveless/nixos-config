@@ -7,7 +7,7 @@ in {
     k3s_1_26
   ];
 
-  services.k3s = with import ./secrets.nix {
+  services.k3s = with import ./secrets.nix; {
     enable = true;
     package = k3s_1_26;
     extraFlags = "--no-deploy traefik --cluster-cidr 10.24.0.0/16";
