@@ -4,7 +4,11 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
@@ -14,6 +18,14 @@
     ../../modules/nomad/client.nix
     ../../modules/k3s/agent.nix
   ];
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   k3s = with import ./secrets.nix; {
     token = k3s.token;

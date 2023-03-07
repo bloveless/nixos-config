@@ -18,7 +18,6 @@
   config = {
     services.k3s = {
       role = "server";
-      disableAgent = true;
       clusterInit = config.k3s.clusterInit;
     };
 
