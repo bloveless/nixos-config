@@ -4,13 +4,25 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
     ../../modules/dnsmasq/default.nix
   ];
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   networking.hostName = "peppyhare"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {

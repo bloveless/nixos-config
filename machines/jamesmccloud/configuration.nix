@@ -5,6 +5,9 @@
 { config, pkgs, ... }:
 
 let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
    configFile = with import ./secrets.nix; pkgs.writeText "Caddyfile" ''
 {
 	debug
@@ -275,6 +278,14 @@ in {
     ../../modules/users/brennon.nix
     ../../modules/cloudflared/service.nix
   ];
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   cloudflared.token = with import ./secrets.nix; cloudflared.token;
 

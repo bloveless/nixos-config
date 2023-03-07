@@ -18,6 +18,7 @@
   config = {
     services.k3s = {
       role = "server";
+      extraFlags = "--disable traefik --cluster-cidr 10.24.0.0/16";
       clusterInit = config.k3s.clusterInit;
     };
 
