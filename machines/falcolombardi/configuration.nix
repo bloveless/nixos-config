@@ -80,6 +80,7 @@ in {
   networking.firewall.allowedTCPPorts = [
     9999 # fabio lb
     9998 # fabio ui
+    8443 # consul api gateway
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
