@@ -19,7 +19,7 @@
     ];
 
     services.k3s = with import ./secrets.nix; {
-      enable = true;
+      enable = false;
       package = pkgs.unstable.k3s;
       token = config.k3s.token;
       serverAddr = config.k3s.serverAddr;
