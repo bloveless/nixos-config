@@ -8,6 +8,7 @@
   };
 
   networking.firewall.allowedTCPPorts = [
+    443 # consul api gateway
     10250 # k3s kubelet metrics
   ];
   networking.firewall.allowedTCPPortRanges = [];
