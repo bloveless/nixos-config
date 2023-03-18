@@ -18,7 +18,7 @@
   config = {
     services.k3s = {
       role = "server";
-      extraFlags = "--disable traefik --disable servicelb --cluster-cidr 10.24.0.0/16 --node-taint CriticalAddonsOnly=true:NoExecute";
+      extraFlags = "--disable traefik --cluster-cidr 10.24.0.0/16 --node-taint CriticalAddonsOnly=true:NoExecute";
       clusterInit = config.k3s.clusterInit;
     };
 
