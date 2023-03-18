@@ -31,50 +31,6 @@ in {
     serverAddr = "https://192.168.5.20:6443";
   };
 
-  environment.etc = {
-    "nomad.d/volumes.hcl".text = ''
-      client {
-        host_volume "fileflows-node-data" {
-          path = "/mnt/storage-nfs/media-server/fileflows-node/Data"
-          read_only = false
-        }
-        host_volume "fileflows-node-logs" {
-          path = "/mnt/storage-nfs/media-server/fileflows-node/Logs"
-          read_only = false
-        }
-        host_volume "fileflows-node-temp" {
-          path = "/mnt/storage-nfs/media-server/fileflows-node/Temp"
-          read_only = false
-        }
-        host_volume "media" {
-          path = "/mnt/storage-nfs/media-server/plex/data/library"
-          read_only = false
-        }
-        host_volume "omada-controller-data" {
-          path = "/mnt/storage-nfs/omada-controller/data"
-          read_only = false
-        }
-        host_volume "omada-controller-logs" {
-          path = "/mnt/storage-nfs/omada-controller/logs"
-          read_only = false
-        }
-      }
-    '';
-    "nomad.d/extra.hcl".text = ''
-      client {
-        meta {
-          gpu = "true"
-        }
-      }
-    '';
-  };
-
-  consul = with import ./secrets.nix; {
-    ipAddress = "192.168.5.107";
-    consulAgentCA = consul."consul-agent-ca.pem";
-    encryptionKey = consul.encryption_key;
-  };
-
   networking.hostName = "kattmonroe"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
     address = "192.168.5.107";

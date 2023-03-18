@@ -29,15 +29,6 @@ in {
     serverAddr = "https://192.168.5.20:6443";
   };
 
-  consul = with import ./secrets.nix; {
-    ipAddress = "192.168.5.108";
-    consulAgentCAKey = consul."consul-agent-ca-key.pem";
-    consulAgentCA = consul."consul-agent-ca.pem";
-    homelab01ServerConsul0Key = consul."homelab01-server-consul-0-key.pem";
-    homelab01ServerConsul0 = consul."homelab01-server-consul-0.pem";
-    encryptionKey = consul.encryption_key;
-  };
-
   networking.hostName = "andross03"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
     address = "192.168.5.108";

@@ -45,12 +45,6 @@ in {
     '';
   };
 
-  consul = with import ./secrets.nix; {
-    ipAddress = "192.168.5.19";
-    consulAgentCA = consul."consul-agent-ca.pem";
-    encryptionKey = consul.encryption_key;
-  };
-
   networking.hostName = "foxmccloud"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
     address = "192.168.5.19";
