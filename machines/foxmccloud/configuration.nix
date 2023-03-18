@@ -14,8 +14,6 @@ in {
     ../../modules/base/configuration.nix
     ../../modules/storage/nfs.nix
     ../../modules/users/brennon.nix
-    ../../modules/nomad/base.nix
-    ../../modules/nomad/client.nix
     ../../modules/k3s/agent.nix
   ];
 

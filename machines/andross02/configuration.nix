@@ -13,8 +13,6 @@ in {
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
     ../../modules/users/brennon.nix
-    ../../modules/nomad/base.nix
-    ../../modules/nomad/server.nix
     ../../modules/k3s/server.nix
   ];
 
