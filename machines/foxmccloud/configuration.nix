@@ -53,16 +53,11 @@ in {
   networking.nameservers = [ "192.168.5.201" ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    9999 # fabio lb
-    9998 # fabio ui
-    5432 # postgres
-    8443 # consul api gateway
-  ];
+  networking.firewall.allowedTCPPorts = [ ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   services.keepalived = with import ./secrets.nix; {
-    enable = true;
+    enable = false;
     vrrpInstances = {
       VI_2 = {
         interface = "ens18";
