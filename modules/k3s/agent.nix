@@ -9,12 +9,10 @@
 
   networking.firewall.allowedTCPPorts = [
     443 # consul api gateway
-    7934 # purelb memberlist port
     10250 # k3s kubelet metrics
   ];
   networking.firewall.allowedTCPPortRanges = [];
   networking.firewall.allowedUDPPorts = [
-    7934 # purelb memberlist port
     8472 # k3s flannel vxlan
     51820 # k3s flannel wireguard
     51821 # k3s flannel wireguard ipv6

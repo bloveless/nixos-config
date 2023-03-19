@@ -57,7 +57,7 @@ in {
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   services.keepalived = with import ./secrets.nix; {
-    enable = false;
+    enable = true;
     vrrpInstances = {
       VI_2 = {
         interface = "ens18";
