@@ -84,3 +84,11 @@ upgrade-nix: clean-nix
 	ssh -t katt 'sudo nixos-rebuild switch --upgrade'
 	ssh -t slippy 'sudo nixos-rebuild switch --upgrade'
 	ssh -t peppy 'sudo nixos-rebuild switch --upgrade'
+
+reset-k3s:
+	ssh -t andross01 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+	ssh -t andross02 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+	ssh -t andross03 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+	ssh -t fox 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+	ssh -t falco 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+	ssh -t katt 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
