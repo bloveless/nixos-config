@@ -95,9 +95,9 @@ reset-k3s:
 
 
 reboot:
-	ssh -t andross01 'sudo reboot'
-	ssh -t andross02 'sudo reboot'
-	ssh -t andross03 'sudo reboot'
-	ssh -t fox 'sudo reboot'
-	ssh -t falco 'sudo reboot'
-	ssh -t katt 'sudo reboot'
+	ssh -t andross01 'sudo reboot' || true
+	ssh -t andross02 'sudo reboot' || true
+	ssh -t andross03 'sudo reboot' || true
+	ssh -t fox 'sudo reboot' || true
+	ssh -t falco 'sudo reboot' || true
+	ssh -t katt 'sudo reboot' || true
