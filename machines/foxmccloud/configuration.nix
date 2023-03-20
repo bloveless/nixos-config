@@ -30,21 +30,6 @@ in {
     serverAddr = "https://192.168.5.20:6443";
   };
 
-  environment.etc = {
-    "nomad.d/volumes.hcl".text = ''
-      client {
-        host_volume "postgres-data" {
-          path = "/mnt/storage-local/postgres/data"
-          read_only = false
-        }
-        host_volume "media" {
-          path = "/mnt/storage-nfs/media-server/plex/data/library"
-          read_only = false
-        }
-      }
-    '';
-  };
-
   networking.hostName = "foxmccloud"; # Define your hostname.
   networking.interfaces.ens18.ipv4.addresses = [ {
     address = "192.168.5.19";
