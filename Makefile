@@ -92,3 +92,12 @@ reset-k3s:
 	ssh -t fox 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
 	ssh -t falco 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
 	ssh -t katt 'sudo systemctl stop k3s && sudo rm -rf /var/lib/rancher'
+
+
+reboot:
+	ssh -t andross01 'sudo reboot'
+	ssh -t andross02 'sudo reboot'
+	ssh -t andross03 'sudo reboot'
+	ssh -t fox 'sudo reboot'
+	ssh -t falco 'sudo reboot'
+	ssh -t katt 'sudo reboot'
