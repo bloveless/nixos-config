@@ -18,7 +18,7 @@
   config = {
     services.k3s = {
       role = "server";
-      extraFlags = "--cluster-cidr 10.24.0.0/16 --node-taint node-role.kubernetes.io/control-plane=true:NoSchedule";
+      extraFlags = "--flannel-backend=none --disable-network-policy --cluster-cidr 10.24.0.0/16 --node-taint node-role.kubernetes.io/control-plane=true:NoSchedule";
       clusterInit = config.k3s.clusterInit;
     };
 
