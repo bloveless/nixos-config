@@ -25,22 +25,7 @@
     groups = [ "wheel" ];
     commands = [
       {
-        command = "/run/current-system/sw/bin/nixos-rebuild";
-        options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-      }
-
-      {
-        command = "/run/current-system/sw/bin/git";
-        options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-      }
-
-      {
-        command = "/run/current-system/sw/bin/systemctl";
-        options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-      }
-
-      {
-        command = "/run/current-system/sw/bin/nix-collect-garbage";
+        command = "ALL";
         options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
       }
     ];
