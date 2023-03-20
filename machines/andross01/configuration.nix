@@ -12,7 +12,6 @@ in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/base/configuration.nix
-    ../../modules/storage/nfs.nix
     ../../modules/users/brennon.nix
     ../../modules/k3s/server.nix
   ];
