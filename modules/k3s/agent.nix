@@ -3,19 +3,21 @@
 {
   imports = [ ./base.nix ];
   
-  services.k3s = {
-    role = "agent";
-  };
+  services = {
+    k3s = {
+      role = "agent";
+    };
 
-  services.kubernetes = {
-    roles = ["node"];
-    masterAddress = "192.168.5.20";
-    easyCerts = true;
+    kubernetes = {
+      roles = ["node"];
+      masterAddress = "192.168.5.20";
+      easyCerts = true;
 
-    kubelet.kubeconfig.server = "https://192.168.5.20:6443";
-    apiserverAddress = "https://192.168.5.20:6443";
+      kubelet.kubeconfig.server = "https://192.168.5.20:6443";
+      apiserverAddress = "https://192.168.5.20:6443";
 
-    addons.dns.enable = true;
+      addons.dns.enable = true;
+    };
   };
 
   networking.firewall.allowedTCPPorts = [
