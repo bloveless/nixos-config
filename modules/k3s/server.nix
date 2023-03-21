@@ -22,21 +22,6 @@
         extraFlags = "--cluster-cidr 10.24.0.0/16 --node-taint node-role.kubernetes.io/control-plane=true:NoSchedule";
         clusterInit = config.k3s.clusterInit;
       };
-
-      kubernetes = {
-        roles = ["master" "node"];
-        masterAddress = "192.168.5.20";
-        apiserverAddress = "https://192.168.5.20:6443";
-        easyCerts = true;
-
-        apiserver = {
-          securePort = 6443;
-          advertiseAddress = "192.168.5.20";
-        };
-
-        # use coredns
-        addons.dns.enable = true;
-      };
     };
 
     networking.firewall.allowedTCPPorts = [

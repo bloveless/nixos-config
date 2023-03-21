@@ -7,17 +7,6 @@
     k3s = {
       role = "agent";
     };
-
-    kubernetes = {
-      roles = ["node"];
-      masterAddress = "192.168.5.20";
-      easyCerts = true;
-
-      kubelet.kubeconfig.server = "https://192.168.5.20:6443";
-      apiserverAddress = "https://192.168.5.20:6443";
-
-      addons.dns.enable = true;
-    };
   };
 
   networking.firewall.allowedTCPPorts = [
