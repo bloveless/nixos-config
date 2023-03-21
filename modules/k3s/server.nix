@@ -22,8 +22,23 @@
       clusterInit = config.k3s.clusterInit;
     };
 
+    server.kubernetes = {
+      roles = ["master" "node"];
+      masterAddress = "192.168.5.20";
+      apiserverAddress = "https://192.168.5.20:6443";
+      easyCerts = true;
+
+      apiserver = {
+        securePort = 6443;
+        advertiseAddress = "192.168.5.20";
+      };
+
+      # use coredns
+      addons.dns.enable = true;
+    };
+
     networking.firewall.allowedTCPPorts = [
-      6443 # k3s api
+      6443 # k3s/kubernetes api
       10250 # k3s kubelet metrics
     ];
     networking.firewall.allowedTCPPortRanges = [

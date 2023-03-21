@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
 
+let
+  kubeMasterIP = "192.168.5.20";
+  kubeMasterHostname = "api.kube";
+  kubeMasterAPIServerPort = 6443;
+in
 {
   options = {
     k3s = {
@@ -16,6 +21,8 @@
   config = {
     environment.systemPackages = [
       pkgs.unstable.k3s
+      pkgs.kubectl
+      pkgs.kubernetes
     ];
 
     services.k3s = with import ./secrets.nix; {
