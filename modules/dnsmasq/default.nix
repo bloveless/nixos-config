@@ -25,9 +25,9 @@
     192.168.5.58	proxmox
     192.168.5.58	publicip
     192.168.5.58	qbittorrent
-    192.168.5.58	radarr
+    192.168.6.1 	radarr
     192.168.5.15	redis
-    192.168.5.58	sonarr
+    192.168.6.1 	sonarr
     192.168.5.58	speedtest-tracker
   '';
 

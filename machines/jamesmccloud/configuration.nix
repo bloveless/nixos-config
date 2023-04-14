@@ -111,22 +111,6 @@ overseerr.lan.brennonloveless.com {
 	reverse_proxy http://192.168.5.17:5055
 }
 
-radarr.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.6.1
-}
-
-sonarr.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.6.1
-}
-
 prowlarr.lan.brennonloveless.com {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
