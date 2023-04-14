@@ -10,7 +10,7 @@
     192.168.5.58	minio
     192.168.5.58	nas
     192.168.5.58	notes
-    192.168.6.1 	nzbget
+    192.168.6.1 	sabnzbd
     192.168.5.58	omada
     192.168.5.58	openspeedtest
     192.168.5.58	outline
