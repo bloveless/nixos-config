@@ -116,7 +116,7 @@ radarr.lan.brennonloveless.com {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy http://192.168.5.17:7878
+	reverse_proxy http://192.168.6.1
 }
 
 sonarr.lan.brennonloveless.com {
