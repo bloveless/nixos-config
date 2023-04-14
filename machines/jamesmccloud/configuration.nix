@@ -103,60 +103,12 @@ nas.lan.brennonloveless.com {
 	}
 }
 
-overseerr.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.17:5055
-}
-
-prowlarr.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.17:9696
-}
-
-nzbget.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.17:6789
-}
-
-qbittorrent.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.17:8080
-}
-
 fileflows.lan.brennonloveless.com {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
 	reverse_proxy http://192.168.5.202:9999
-}
-
-grafana.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.105:3000
-}
-
-prometheus.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.105:9090
 }
 
 notes.lan.brennonloveless.com {
@@ -229,30 +181,6 @@ omada.lan.brennonloveless.com:8043 {
 	}
 
 	reverse_proxy http://192.168.5.202:9999
-}
-
-consul.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.20:8500
-}
-
-nomad.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.20:4646
-}
-
-fabio.lan.brennonloveless.com {
-	tls {
-		dns cloudflare  ${cloudflare.dns_api_key}
-	}
-
-	reverse_proxy http://192.168.5.202:9998
 }
   '';
 in {

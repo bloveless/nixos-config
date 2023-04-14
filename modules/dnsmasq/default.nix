@@ -2,29 +2,26 @@
 {
   networking.extraHosts = ''
     192.168.5.58	authelia
-    192.168.5.58	consul
-    192.168.5.58	nomad
-    192.168.5.58	fabio
     192.168.5.58	brennonloveless
     192.168.5.58	dashboard
     192.168.5.58	fileflows
-    192.168.5.58	grafana
+    192.168.6.1 	grafana
     192.168.5.58	minio-api
     192.168.5.58	minio
     192.168.5.58	nas
     192.168.5.58	notes
-    192.168.5.58	nzbget
+    192.168.6.1 	nzbget
     192.168.5.58	omada
     192.168.5.58	openspeedtest
     192.168.5.58	outline
-    192.168.5.58	overseerr
+    192.168.6.1 	overseerr
     192.168.5.58	portainer
     192.168.5.15	postgres
     192.168.5.58	prometheus
-    192.168.5.58	prowlarr
+    192.168.6.1 	prowlarr
     192.168.5.58	proxmox
     192.168.5.58	publicip
-    192.168.5.58	qbittorrent
+    192.168.6.1 	qbittorrent
     192.168.6.1 	radarr
     192.168.5.15	redis
     192.168.6.1 	sonarr
