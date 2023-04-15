@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   networking.extraHosts = ''
+    192.168.6.1 	argocd
     192.168.5.58	authelia
     192.168.5.58	brennonloveless
     192.168.5.58	dashboard
