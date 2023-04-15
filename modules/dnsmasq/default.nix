@@ -7,6 +7,7 @@
     192.168.5.58	dashboard
     192.168.5.58	fileflows
     192.168.6.1 	grafana
+    192.168.6.1 	jackett
     192.168.5.58	minio-api
     192.168.5.58	minio
     192.168.5.58	nas
