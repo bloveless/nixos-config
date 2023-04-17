@@ -19,7 +19,7 @@
     192.168.6.1 	overseerr
     192.168.5.58	portainer
     192.168.5.15	postgres
-    192.168.5.58	prometheus
+    192.168.6.1 	prometheus
     192.168.6.1 	prowlarr
     192.168.5.58	proxmox
     192.168.5.58	publicip
