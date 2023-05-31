@@ -67,6 +67,15 @@ dashboard.lan.brennonloveless.com {
 	reverse_proxy http://192.168.5.54:3000
 }
 
+
+code.lan.brennonloveless.com {
+	tls {
+		dns cloudflare  ${cloudflare.dns_api_key}
+	}
+
+	reverse_proxy http://192.168.5.106:4444
+}
+
 portainer.lan.brennonloveless.com {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
