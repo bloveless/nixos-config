@@ -112,6 +112,14 @@ nas.lan.brennonloveless.com {
 	}
 }
 
+devbox.lan.brennonloveless.com:3000, devbox.lan.brennonloveless.com:5173 {
+	tls {
+		dns cloudflare  ${cloudflare.dns_api_key}
+	}
+
+	reverse_proxy https://192.168.5.106:{port}
+}
+
 fileflows.lan.brennonloveless.com {
 	tls {
 		dns cloudflare  ${cloudflare.dns_api_key}
