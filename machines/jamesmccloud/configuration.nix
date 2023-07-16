@@ -117,7 +117,7 @@ devbox.lan.brennonloveless.com:3000, devbox.lan.brennonloveless.com:5173 {
 		dns cloudflare  ${cloudflare.dns_api_key}
 	}
 
-	reverse_proxy https://192.168.5.106:{port}
+	reverse_proxy 192.168.5.106:{port}
 }
 
 fileflows.lan.brennonloveless.com {
@@ -229,6 +229,8 @@ in {
   networking.firewall.allowedTCPPorts = [
     80 # caddy http
     443 # caddy https
+    3000 # devbox api
+    5173 # devbox vite
     8043 # omada listens on 8043
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
