@@ -6,7 +6,7 @@
     192.168.5.58	brennonloveless
     192.168.5.58	code
     192.168.5.58	dashboard
-    192.168.5.58	devbox
+    192.168.5.106	devbox
     192.168.5.58	fileflows
     192.168.6.1 	grafana
     192.168.6.1 	jackett
