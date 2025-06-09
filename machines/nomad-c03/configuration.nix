@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -58,32 +58,6 @@
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.brennon = {
-    isNormalUser = true;
-    description = "Brennon Loveless";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINf6kijsnbx9rJOtxu6pNUgnZOBNK+GqSIHaZEo3IT8Q brennon@Brennons-MacBook-Pro.local"
-    ];
-  };
-
-  security.sudo.extraRules = [
-    {
-      users = [ "brennon" ];
-      commands = [
-        {
-          command = "ALL";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nixpkgs.overlays = [
     (final: prev: {
       nomad_1_10_1 = prev.buildGo124Module (finalAttrs: {
@@ -132,8 +106,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     neovim
     nomad_1_10_1
     consul
@@ -167,63 +141,6 @@
         bootstrap_expect = 1;
       };
       client = {
-        enabled = true;
-      };
-    };
-  };
-
-  age.secrets.gossipEncryptionKey.file = ../../secrets/gossip-encryption-key.age;
-  age.secrets.consulAgentCa = {
-    file = ../../secrets/consul-agent-ca.pem.age;
-    mode = "700";
-    owner = "consul";
-    group = "consul";
-  };
-  age.secrets.consulClientKey = {
-    file = ../../secrets/dc1-client-consul-2-key.pem.age;
-    mode = "700";
-    owner = "consul";
-    group = "consul";
-  };
-  age.secrets.consulClient = {
-    file = ../../secrets/dc1-client-consul-2.pem.age;
-    mode = "700";
-    owner = "consul";
-    group = "consul";
-  };
-
-  services.consul = {
-    enable = true;
-    extraConfig = {
-      datacenter = "dc1";
-      log_level = "INFO";
-      bind_addr = "192.168.100.20";
-      client_addr = "0.0.0.0";
-      server = false;
-      retry_join = [
-        "192.168.100.15"
-        "192.168.100.16"
-        "192.168.100.17"
-      ];
-      # this is an anti-pattern but I don't know how else to get the gossip encryption key in here
-      # since it doesn't support reading in from a file
-      encrypt = builtins.readFile config.age.secrets.gossipEncryptionKey.path;
-      ca_file = config.age.secrets.consulAgentCa.path;
-      cert_file = config.age.secrets.consulClient.path;
-      key_file = config.age.secrets.consulClientKey.path;
-      verify_outgoing = true;
-      auto_encrypt = {
-        tls = true;
-      };
-      telemetry = {
-        prometheus_retention_time = "480h";
-        disable_hostname = true; # Recommended to avoid redundant labels
-      };
-      ports = {
-        grpc = 8502;
-        grpc_tls = -1;
-      };
-      connect = {
         enabled = true;
       };
     };

@@ -7,8 +7,9 @@
       url = "github:ryantm/agenix/0.15.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix-template.url = "github:jhillyerd/agenix-template/1.0.0";
   };
-  outputs = { nixpkgs, colmena, agenix, ... }: {
+  outputs = { nixpkgs, colmena, agenix, agenix-template, ... }: {
     colmenaHive = colmena.lib.makeHive {
       meta = {
         nixpkgs = import nixpkgs {
@@ -17,17 +18,12 @@
         };
       };
 
-      defaults = { config, pkgs, ... }: {
-        ## Install system packages:
-        environment.systemPackages = [];
-        ## Enable `neovim` program:
-        programs.neovim = {
-          enable = true;
-          vimAlias = true;
-          defaultEditor = true;
-        };
+      defaults = { ... }: {
+
         imports = [
           agenix.nixosModules.default
+          agenix-template.nixosModules.default
+          ((builtins.toString ./.) + "/default.nix")
         ];
       };
 
@@ -42,6 +38,7 @@
 
         imports = [
           ((builtins.toString ./.) + "/machines/nomad-c03/configuration.nix")
+          ((builtins.toString ./.) + "/modules/consul/default.nix")
         ];
       };
     };
