@@ -1,3 +1,4 @@
 /configuration.nix
 secrets.nix
+!secrets/secrets.nix
 Session.vim

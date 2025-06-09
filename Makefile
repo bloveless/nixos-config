@@ -1,3 +1,8 @@
+nomad-c03:
+	# Impure is added so I don't have to git commit before every apply
+	TMPDIR=/private/tmp nix run github:zhaofengli/colmena/v0.4.0 -- apply --on nomad-c03 --impure
+
+
 all: commit james servers clients dnsmasq
 
 servers: andross
