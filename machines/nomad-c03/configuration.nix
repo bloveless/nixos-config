@@ -1,12 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ lib, pkgs, ... }:
-
 {
-  imports =
-  [ # Include the results of the hardware scan.
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -65,7 +66,7 @@
         version = "1.10.1";
         vendorHash = "sha256-ZBCwZFrCauT0y/cMhrZow2I0fgbl4JrIEIjmtm/zVd4";
 
-        subPackages = [ "." ];
+        subPackages = ["."];
 
         src = prev.fetchFromGitHub {
           owner = "hashicorp";
@@ -74,7 +75,7 @@
           sha256 = "sha256-fHLtLp2K0BPmN9SYL6xHay9h4zHsGAE8bqboID3J0HE=";
         };
 
-        nativeBuildInputs = [ prev.installShellFiles ];
+        nativeBuildInputs = [prev.installShellFiles];
 
         ldflags = [
           "-X github.com/hashicorp/nomad/version.Version=${finalAttrs.version}"
@@ -85,7 +86,7 @@
         # ui:
         #  Nomad release commits include the compiled version of the UI, but the file
         #  is only included if we build with the ui tag.
-        tags = [ "ui" ];
+        tags = ["ui"];
 
         postInstall = ''
           echo "complete -C $out/bin/nomad nomad" > nomad.bash
@@ -159,5 +160,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }

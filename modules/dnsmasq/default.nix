@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   networking.extraHosts = ''
     192.168.6.1 	argocd
     192.168.5.58	authelia
@@ -36,7 +40,7 @@
     enable = true;
     alwaysKeepRunning = true;
     resolveLocalQueries = true;
-    servers = [ "1.1.1.1" "1.0.0.1" ];
+    servers = ["1.1.1.1" "1.0.0.1"];
     extraConfig = ''
       interface=ens18
       bind-dynamic
@@ -46,7 +50,7 @@
 
       # query with each server strictly in the order in resolv.conf
       bogus-priv
-          
+
       # query with each server strictly in the order in [resolv.conf]
       strict-order
 

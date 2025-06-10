@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -21,15 +23,17 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  security.sudo.extraRules= [{
-    groups = [ "wheel" ];
-    commands = [
-      {
-        command = "ALL";
-        options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-      }
-    ];
-  }];
+  security.sudo.extraRules = [
+    {
+      groups = ["wheel"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"]; # "SETENV" # Adding the following could be a good idea
+        }
+      ];
+    }
+  ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
@@ -37,4 +41,3 @@
   # should.
   system.stateVersion = "22.11";
 }
-

@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
 {
-  imports = [ ./base.nix ];
-  
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./base.nix];
+
   services = {
     k3s = {
       role = "agent";
@@ -20,4 +22,3 @@
     51821 # k3s flannel wireguard ipv6
   ];
 }
-

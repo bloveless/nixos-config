@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   kubeMasterIP = "192.168.5.20";
   kubeMasterHostname = "api.kube";
   kubeMasterAPIServerPort = 6443;
-in
-{
+in {
   options = {
     k3s = {
       token = lib.mkOption {

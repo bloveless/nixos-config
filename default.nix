@@ -1,4 +1,4 @@
-{ ... } : {
+{...}: {
   ## Install system packages:
   environment.systemPackages = [];
   ## Enable `neovim` program:
@@ -11,7 +11,7 @@
   users.users.brennon = {
     isNormalUser = true;
     description = "Brennon Loveless";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = [];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINf6kijsnbx9rJOtxu6pNUgnZOBNK+GqSIHaZEo3IT8Q brennon@Brennons-MacBook-Pro.local"
@@ -19,11 +19,11 @@
   };
   security.sudo.extraRules = [
     {
-      users = [ "brennon" ];
+      users = ["brennon"];
       commands = [
         {
           command = "ALL";
-          options = [ "SETENV" "NOPASSWD" ];
+          options = ["SETENV" "NOPASSWD"];
         }
       ];
     }

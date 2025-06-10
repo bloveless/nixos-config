@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   nomad-1-5 = pkgs.callPackage ./nomad.nix {};
   cni-plugins-1-2 = pkgs.callPackage ./cni-plugins.nix {};
 in {
@@ -38,7 +40,10 @@ in {
     8300 # consul rpc address
   ];
   networking.firewall.allowedTCPPortRanges = [
-    { from = 21000; to = 21255; } # consul proxy sidecar
+    {
+      from = 21000;
+      to = 21255;
+    } # consul proxy sidecar
   ];
   networking.firewall.allowedUDPPorts = [
     4648 # nomad gossip protocol
@@ -50,7 +55,9 @@ in {
     8302 # consul serf wan
   ];
   networking.firewall.allowedUDPPortRanges = [
-    { from = 21000; to = 21255; } # consul proxy sidecar
+    {
+      from = 21000;
+      to = 21255;
+    } # consul proxy sidecar
   ];
 }
-

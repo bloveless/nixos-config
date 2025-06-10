@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   age.secrets.consulGossipEncryptionKey.file = ../../secrets/gossip-encryption-key.age;
   age.secrets.consulAgentCa = {
     file = ../../secrets/consul-agent-ca.pem.age;

@@ -1,5 +1,10 @@
-{ lib, buildGoModule, fetchFromGitHub, stdenv, callPackage }:
-
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  stdenv,
+  callPackage,
+}:
 buildGoModule rec {
   pname = "cloudflared";
   version = "2023.2.1";
@@ -13,7 +18,7 @@ buildGoModule rec {
 
   vendorSha256 = null;
 
-  ldflags = [ "-s" "-w" "-X main.Version=${version}" "-X github.com/cloudflare/cloudflared/cmd/cloudflared/updater.BuiltForPackageManager=nixpkgs" ];
+  ldflags = ["-s" "-w" "-X main.Version=${version}" "-X github.com/cloudflare/cloudflared/cmd/cloudflared/updater.BuiltForPackageManager=nixpkgs"];
 
   preCheck = ''
     # Workaround for: sshgen_test.go:74: mkdir /homeless-shelter/.cloudflared: no such file or directory
@@ -65,13 +70,13 @@ buildGoModule rec {
 
   doCheck = !stdenv.isDarwin;
 
-  passthru.tests.simple = callPackage ./tests.nix { inherit version; };
+  passthru.tests.simple = callPackage ./tests.nix {inherit version;};
 
   meta = with lib; {
     description = "Cloudflare Tunnel daemon, Cloudflare Access toolkit, and DNS-over-HTTPS client";
     homepage = "https://www.cloudflare.com/products/tunnel";
     license = licenses.asl20;
     platforms = platforms.unix ++ platforms.windows;
-    maintainers = with maintainers; [ bbigras enorris thoughtpolice piperswe ];
+    maintainers = with maintainers; [bbigras enorris thoughtpolice piperswe];
   };
 }

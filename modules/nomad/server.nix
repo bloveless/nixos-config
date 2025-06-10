@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
-with lib;
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cni-plugins-1-2 = pkgs.callPackage ./cni-plugins.nix {};
 in {
   options = {
@@ -68,7 +72,7 @@ in {
 
         retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
       '';
-      
+
       "consul.d/server.hcl".text = ''
         server = true
         bootstrap_expect = 3
@@ -107,4 +111,3 @@ in {
     };
   };
 }
-

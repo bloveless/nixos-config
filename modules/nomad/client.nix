@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
-with lib;
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; {
   options = {
     consul = {
       ipAddress = mkOption {
@@ -46,7 +50,7 @@ with lib;
 
         retry_join = [ "192.168.5.20", "192.168.5.57", "192.168.5.108" ]
       '';
-      
+
       "consul.d/client.hcl".text = ''
         bind_addr = "${config.consul.ipAddress}"
       '';
@@ -56,12 +60,12 @@ with lib;
         client {
           enabled = true
         }
-        
+
         plugin "docker" {
           config {
             allow_privileged = true
             allow_caps = ["audit_write", "chown", "dac_override", "fowner", "fsetid", "kill", "mknod", "net_bind_service", "setfcap", "setgid", "setpcap", "setuid", "sys_chroot", "net_admin", "sys_module" ]
-            
+
             volumes {
                 enabled = true
             }
@@ -80,4 +84,3 @@ with lib;
     };
   };
 }
-

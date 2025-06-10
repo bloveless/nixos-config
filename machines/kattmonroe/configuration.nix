@@ -1,13 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   unstableTarball =
     fetchTarball
-      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+    https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
 in {
   imports = [
     ./hardware-configuration.nix
@@ -32,14 +33,16 @@ in {
   };
 
   networking.hostName = "kattmonroe"; # Define your hostname.
-  networking.interfaces.ens18.ipv4.addresses = [ {
-    address = "192.168.5.107";
-    prefixLength = 22;
-  } ];
-  networking.nameservers = [ "192.168.5.201" ];
+  networking.interfaces.ens18.ipv4.addresses = [
+    {
+      address = "192.168.5.107";
+      prefixLength = 22;
+    }
+  ];
+  networking.nameservers = ["192.168.5.201"];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   services.keepalived = with import ./secrets.nix; {
@@ -50,7 +53,7 @@ in {
         priority = 150;
         state = "MASTER";
         unicastSrcIp = "192.168.5.107";
-        unicastPeers = [ "192.168.5.56" "192.168.5.19" ];
+        unicastPeers = ["192.168.5.56" "192.168.5.19"];
         virtualRouterId = 100;
 
         virtualIps = [
@@ -71,4 +74,3 @@ in {
     };
   };
 }
-

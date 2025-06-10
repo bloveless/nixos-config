@@ -9,7 +9,13 @@
     };
     agenix-template.url = "github:jhillyerd/agenix-template/1.0.0";
   };
-  outputs = { nixpkgs, colmena, agenix, agenix-template, ... }: {
+  outputs = {
+    nixpkgs,
+    colmena,
+    agenix,
+    agenix-template,
+    ...
+  }: {
     colmenaHive = colmena.lib.makeHive {
       meta = {
         nixpkgs = import nixpkgs {
@@ -18,8 +24,7 @@
         };
       };
 
-      defaults = { ... }: {
-
+      defaults = {...}: {
         imports = [
           agenix.nixosModules.default
           agenix-template.nixosModules.default
@@ -27,7 +32,12 @@
         ];
       };
 
-      nomad-c03 = { name, nodes, pkgs, ... }: {
+      nomad-c03 = {
+        name,
+        nodes,
+        pkgs,
+        ...
+      }: {
         deployment = {
           targetHost = "nomad-c03";
           targetPort = 22;
