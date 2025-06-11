@@ -11,4 +11,5 @@ in {
   "consul-agent-ca.pem.age".publicKeys = [brennon nomad-c03];
   "dc1-client-consul-2-key.pem.age".publicKeys = [brennon nomad-c03];
   "dc1-client-consul-2.pem.age".publicKeys = [brennon nomad-c03];
+  "docker-auth.json.age".publicKeys = [brennon nomad-c03];
 }

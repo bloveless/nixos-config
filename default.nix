@@ -7,11 +7,12 @@
     vimAlias = true;
     defaultEditor = true;
   };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.brennon = {
     isNormalUser = true;
     description = "Brennon Loveless";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = [];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINf6kijsnbx9rJOtxu6pNUgnZOBNK+GqSIHaZEo3IT8Q brennon@Brennons-MacBook-Pro.local"
