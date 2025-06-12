@@ -20,72 +20,13 @@
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
-          overlays = [];
+          overlays = [
+            (import ./overlays/nomad.nix)
+          ];
         };
       };
 
-      defaults = {
-        pkgs,
-        lib,
-        ...
-      }: {
-        nix.settings.experimental-features = "nix-command flakes";
-
-        # do garbage collection weekly to keep disk usage low
-        nix.gc = {
-          automatic = lib.mkDefault true;
-          dates = lib.mkDefault "weekly";
-          options = lib.mkDefault "--delete-older-than 7d";
-        };
-
-        # Enable the OpenSSH daemon.
-        services.openssh = {
-          enable = true;
-          settings.PasswordAuthentication = false;
-          settings.KbdInteractiveAuthentication = false;
-        };
-
-        # Enable networking
-        networking.networkmanager.enable = true;
-
-        # Set your time zone.
-        time.timeZone = "America/Los_Angeles";
-
-        # Select internationalisation properties.
-        i18n.defaultLocale = "en_US.UTF-8";
-
-        i18n.extraLocaleSettings = {
-          LC_ADDRESS = "en_US.UTF-8";
-          LC_IDENTIFICATION = "en_US.UTF-8";
-          LC_MEASUREMENT = "en_US.UTF-8";
-          LC_MONETARY = "en_US.UTF-8";
-          LC_NAME = "en_US.UTF-8";
-          LC_NUMERIC = "en_US.UTF-8";
-          LC_PAPER = "en_US.UTF-8";
-          LC_TELEPHONE = "en_US.UTF-8";
-          LC_TIME = "en_US.UTF-8";
-        };
-
-        # Configure keymap in X11
-        services.xserver.xkb = {
-          layout = "us";
-          variant = "";
-        };
-
-        nixpkgs.overlays = [
-          (import ./overlays/nomad.nix)
-        ];
-
-        # List packages installed in system profile. To search, run:
-        # $ nix search wget
-        environment.systemPackages = with pkgs; [
-          #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-          #  wget
-          neovim
-          nomad
-          consul
-        ];
-
+      defaults = {...}: {
         imports = [
           agenix.nixosModules.default
           agenix-template.nixosModules.default
@@ -96,19 +37,39 @@
         ];
       };
 
-      nomad-c03 = {
-        name,
-        nodes,
-        pkgs,
-        ...
-      }: {
+      nomad-c01 = {...}: {
+        deployment = {
+          targetHost = "nomad-c01";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/nomad-c02/configuration.nix
+        ];
+      };
+
+      nomad-c02 = {...}: {
+        deployment = {
+          targetHost = "nomad-c02";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/nomad-c02/configuration.nix
+        ];
+      };
+
+      nomad-c03 = {...}: {
         deployment = {
           targetHost = "nomad-c03";
           targetPort = 22;
           targetUser = "brennon";
           buildOnTarget = true;
         };
-        time.timeZone = "America/Los_Angeles";
 
         imports = [
           ./machines/nomad-c03/configuration.nix

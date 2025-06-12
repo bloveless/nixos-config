@@ -1,7 +1,14 @@
+nomad-c01:
+	# Impure is added so I don't have to git commit before every apply
+	TMPDIR=/private/tmp nix run github:zhaofengli/colmena/v0.4.0 -- apply --on nomad-c01 --impure
+
+nomad-c02:
+	# Impure is added so I don't have to git commit before every apply
+	TMPDIR=/private/tmp nix run github:zhaofengli/colmena/v0.4.0 -- apply --on nomad-c02 --impure
+
 nomad-c03:
 	# Impure is added so I don't have to git commit before every apply
 	TMPDIR=/private/tmp nix run github:zhaofengli/colmena/v0.4.0 -- apply --on nomad-c03 --impure
-
 
 all: commit james servers clients dnsmasq
 
@@ -43,10 +50,10 @@ peppy:
 secrets:
 	scp ./machines/jamesmccloud/secrets.nix james:~/secrets.nix
 	ssh -t james 'sudo mv ~/secrets.nix /etc/nixos/machines/jamesmccloud/secrets.nix'
-	
+
 	scp ./machines/slippytoad/secrets.nix slippy:~/secrets.nix
 	ssh -t slippy 'sudo mv ~/secrets.nix /etc/nixos/machines/slippytoad/secrets.nix'
-	
+
 	scp ./machines/peppyhare/secrets.nix peppy:~/secrets.nix
 	ssh -t peppy 'sudo mv ~/secrets.nix /etc/nixos/machines/peppyhare/secrets.nix'
 
