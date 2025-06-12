@@ -49,7 +49,7 @@ in {
       enable = true;
       package = pkgs.nomad; # this is overwritten by an overlay
       enableDocker = true;
-      extraPackages = with pkgs; [cni-plugins];
+      extraPackages = with pkgs; [cni-plugins consul];
       extraSettingsPlugins = with pkgs; [nomad-driver-podman];
       settings = {
         bind_addr = "0.0.0.0";
@@ -68,6 +68,7 @@ in {
         client = {
           enabled = true;
           servers = cfg.servers;
+          cni_path = "${pkgs.cni-plugins}/bin";
         };
 
         consul = {

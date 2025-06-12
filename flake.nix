@@ -39,6 +39,7 @@
 
       nomad-c01 = {...}: {
         deployment = {
+          tags = ["client"];
           targetHost = "nomad-c01";
           targetPort = 22;
           targetUser = "brennon";
@@ -46,12 +47,13 @@
         };
 
         imports = [
-          ./machines/nomad-c02/configuration.nix
+          ./machines/nomad-c01/configuration.nix
         ];
       };
 
       nomad-c02 = {...}: {
         deployment = {
+          tags = ["client"];
           targetHost = "nomad-c02";
           targetPort = 22;
           targetUser = "brennon";
@@ -65,6 +67,7 @@
 
       nomad-c03 = {...}: {
         deployment = {
+          tags = ["client"];
           targetHost = "nomad-c03";
           targetPort = 22;
           targetUser = "brennon";
