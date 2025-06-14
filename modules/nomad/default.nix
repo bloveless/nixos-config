@@ -8,6 +8,9 @@
 in {
   options.custom.nomad = {
     enable = lib.mkEnableOption "nomad";
+    role = lib.mkOption {
+      type = lib.types.enum ["server" "client"];
+    };
     enableDocker = lib.mkEnableOption "docker";
     enablePodman = lib.mkEnableOption "podman";
     runAsRoot = lib.mkEnableOption "run the nomad service as root (required on clients)";
@@ -29,8 +32,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # https://nixos.wiki/wiki/Docker
-    virtualisation.docker.enable = cfg.enableDocker;
     # https://nixos.wiki/wiki/Podman
     virtualisation.containers.enable = true;
     virtualisation = {
@@ -48,7 +49,7 @@ in {
       dropPrivileges = !cfg.runAsRoot; # clients need to run as root
       enable = true;
       package = pkgs.nomad; # this is overwritten by an overlay
-      enableDocker = true;
+      enableDocker = cfg.enableDocker;
       extraPackages = with pkgs; [cni-plugins consul];
       extraSettingsPlugins = with pkgs; [nomad-driver-podman];
       settings = {
@@ -57,8 +58,8 @@ in {
         server = {
           # license_path is required for Nomad Enterprise as of Nomad v1.1.1+
           #license_path = "/etc/nomad.d/license.hclic"
-          enabled = false;
-          bootstrap_expect = 1;
+          enabled = cfg.role == "server";
+          bootstrap_expect = 3;
         };
 
         acl = {
@@ -66,13 +67,13 @@ in {
         };
 
         client = {
-          enabled = true;
+          enabled = cfg.role == "client";
           servers = cfg.servers;
           cni_path = "${pkgs.cni-plugins}/bin";
         };
 
         consul = {
-          grpc_address = "127.0.0.1:8503";
+          grpc_address = "127.0.0.1:8502";
           address = "127.0.0.1:8500"; # Consul is running locally
           ca_file = cfg.consulAgentCaPath;
           cert_file = cfg.consulClientPath;
@@ -88,7 +89,7 @@ in {
           publish_node_metrics = true;
         };
 
-        plugin = [
+        plugin = lib.optionals (cfg.role == "client") [
           {
             docker = {
               config = {
@@ -102,8 +103,44 @@ in {
               };
             };
           }
+          # Add the Podman plugin configuration here, conditionally
+          (lib.mkIf cfg.enablePodman {
+            nomad-driver-podman = {
+              # You can add specific Podman driver configurations here if needed.
+              # For example, to specify a custom socket path or other options.
+              # Common configurations are often left at their defaults.
+              # See Nomad Podman driver documentation for details:
+              # https://www.nomadproject.io/docs/drivers/podman
+              config = {
+                # Example: If you need to specify a custom socket (unlikely for default NixOS setup)
+                # socket_path = "/run/user/1000/podman/podman.sock";
+              };
+            };
+          })
         ];
       };
     };
+
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [
+      4646 # nomad http api
+      4647 # nomad internal rpc
+      4648 # nomad gossip protocol
+    ];
+    networking.firewall.allowedUDPPorts = [
+      4648 # nomad gossip protocol
+    ];
+    networking.firewall.allowedTCPPortRanges = [
+      {
+        from = 20000;
+        to = 32000;
+      } # nomad ephemeral ports
+    ];
+    networking.firewall.allowedUDPPortRanges = [
+      {
+        from = 20000;
+        to = 32000;
+      } # nomad ephemeral ports
+    ];
   };
 }

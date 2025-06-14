@@ -41,6 +41,7 @@
 
   custom.consul = {
     enable = true;
+    role = "client";
     gossipKeyPath = config.age.secrets.consulGossipEncryptionKey.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
     consulClientKeyPath = config.age.secrets.consulClientKey.path;
@@ -55,6 +56,7 @@
 
   custom.nomad = {
     enable = true;
+    role = "client";
     enableDocker = true;
     enablePodman = true;
     runAsRoot = true;

@@ -37,6 +37,48 @@
         ];
       };
 
+      nomad-s01 = {...}: {
+        deployment = {
+          tags = ["server"];
+          targetHost = "nomad-s01";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/nomad-s01/configuration.nix
+        ];
+      };
+
+      nomad-s02 = {...}: {
+        deployment = {
+          tags = ["server"];
+          targetHost = "nomad-s02";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/nomad-s02/configuration.nix
+        ];
+      };
+
+      nomad-s03 = {...}: {
+        deployment = {
+          tags = ["server"];
+          targetHost = "nomad-s03";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/nomad-s03/configuration.nix
+        ];
+      };
+
       nomad-c01 = {...}: {
         deployment = {
           tags = ["client"];

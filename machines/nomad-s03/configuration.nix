@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -12,7 +16,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nomad-c01";
+  networking.hostName = "nomad-s03";
 
   age.secrets.consulGossipEncryptionKey.file = ../../secrets/gossip-encryption-key.age;
   age.secrets.consulAgentCa = {
@@ -22,13 +26,13 @@
     group = "consul";
   };
   age.secrets.consulClientKey = {
-    file = ../../secrets/dc1-client-consul-0-key.pem.age;
+    file = ../../secrets/dc1-server-consul-2-key.pem.age;
     mode = "600";
     owner = "consul";
     group = "consul";
   };
   age.secrets.consulClient = {
-    file = ../../secrets/dc1-client-consul-0.pem.age;
+    file = ../../secrets/dc1-server-consul-2.pem.age;
     mode = "600";
     owner = "consul";
     group = "consul";
@@ -37,12 +41,12 @@
 
   custom.consul = {
     enable = true;
-    role = "client";
+    role = "server";
     gossipKeyPath = config.age.secrets.consulGossipEncryptionKey.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
     consulClientKeyPath = config.age.secrets.consulClientKey.path;
     consulClientPath = config.age.secrets.consulClient.path;
-    bindAddr = "192.168.100.18";
+    bindAddr = "192.168.100.17";
     retryJoin = [
       "192.168.100.15"
       "192.168.100.16"
@@ -52,10 +56,10 @@
 
   custom.nomad = {
     enable = true;
-    role = "client";
-    enableDocker = true;
-    enablePodman = true;
-    runAsRoot = true;
+    role = "server";
+    enableDocker = false;
+    enablePodman = false;
+    runAsRoot = false;
     dockerAuthPath = config.age.secrets.dockerAuth.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
     consulClientKeyPath = config.age.secrets.consulClientKey.path;
@@ -66,17 +70,6 @@
       "192.168.100.17:4647"
     ];
   };
-
-  custom.nfs = {
-    mediaMount.enable = true;
-    homelabMount.enable = true;
-  };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

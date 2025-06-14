@@ -7,6 +7,9 @@
 in {
   options.custom.consul = {
     enable = lib.mkEnableOption "my consul";
+    role = lib.mkOption {
+      type = lib.types.enum ["server" "client"];
+    };
     gossipKeyPath = lib.mkOption {
       type = lib.types.str;
     };
@@ -46,14 +49,30 @@ in {
         log_level = "INFO";
         bind_addr = cfg.bindAddr;
         client_addr = "0.0.0.0";
-        server = false;
+        server = cfg.role == "server";
+        bootstrap_expect =
+          if cfg.role == "server"
+          then 3
+          else 0;
         retry_join = cfg.retryJoin;
-        ca_file = cfg.consulAgentCaPath;
-        cert_file = cfg.consulClientPath;
-        key_file = cfg.consulClientKeyPath;
-        verify_outgoing = true;
+        tls = {
+          defaults = {
+            verify_incoming = false; # not sure why this has to be false since I've shared the ca files with all servers and clients
+            verify_outgoing = true;
+            verify_server_hostname = true;
+            ca_file = cfg.consulAgentCaPath;
+            cert_file = cfg.consulClientPath;
+            key_file = cfg.consulClientKeyPath;
+          };
+        };
         auto_encrypt = {
-          tls = true;
+          tls = cfg.role == "client";
+        };
+        performance = {
+          raft_multiplier = 1; # Recommended for 3-5 servers
+        };
+        ui_config = {
+          enabled = cfg.role == "server";
         };
         telemetry = {
           prometheus_retention_time = "480h";
@@ -71,5 +90,34 @@ in {
         config.age-template.files."consul-gossip-encryption.hcl".path
       ];
     };
+
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [
+      8300 # consul rpc address
+      8301 # consul serf lan
+      8302 # consul serf wan
+      8500 # consul http api
+      8501 # consul https api
+      8502 # consul grpc api
+      8503 # consul grpc api tls
+      8600 # consul dns
+    ];
+    networking.firewall.allowedTCPPortRanges = [
+      {
+        from = 20000;
+        to = 32000;
+      } # consul proxy sidecar
+    ];
+    networking.firewall.allowedUDPPorts = [
+      8301 # consul serf lan
+      8302 # consul serf wan
+      8600 # consul dns
+    ];
+    networking.firewall.allowedUDPPortRanges = [
+      {
+        from = 20000;
+        to = 32000;
+      } # consul proxy sidecar
+    ];
   };
 }

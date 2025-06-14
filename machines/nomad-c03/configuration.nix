@@ -41,6 +41,7 @@
 
   custom.consul = {
     enable = true;
+    role = "client";
     gossipKeyPath = config.age.secrets.consulGossipEncryptionKey.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
     consulClientKeyPath = config.age.secrets.consulClientKey.path;
@@ -55,6 +56,7 @@
 
   custom.nomad = {
     enable = true;
+    role = "client";
     enableDocker = true;
     enablePodman = true;
     runAsRoot = true;
@@ -73,12 +75,6 @@
     mediaMount.enable = true;
     homelabMount.enable = true;
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
