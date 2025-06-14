@@ -57,15 +57,16 @@ in {
         retry_join = cfg.retryJoin;
         tls = {
           defaults = {
-            verify_incoming = false; # not sure why this has to be false since I've shared the ca files with all servers and clients
+            verify_incoming = true;
             verify_outgoing = true;
             verify_server_hostname = true;
             ca_file = cfg.consulAgentCaPath;
-            cert_file = cfg.consulClientPath;
-            key_file = cfg.consulClientKeyPath;
+            cert_file = cfg.consulClientPath; # this should only be set on the server they will be generated on the clients
+            key_file = cfg.consulClientKeyPath; # this should only be set on the server they will be generated on the clients
           };
         };
         auto_encrypt = {
+          allow_tls = cfg.role == "server";
           tls = cfg.role == "client";
         };
         performance = {
