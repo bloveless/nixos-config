@@ -9,12 +9,6 @@ let
 in {
   "consul-agent-ca.pem.age".publicKeys = [brennon nomad-c01 nomad-c02 nomad-c03 nomad-s01 nomad-s02 nomad-s03];
   "consul-agent-ca-key.pem.age".publicKeys = [brennon];
-  "dc1-client-consul-0-key.pem.age".publicKeys = [brennon nomad-c01];
-  "dc1-client-consul-0.pem.age".publicKeys = [brennon nomad-c01];
-  "dc1-client-consul-1-key.pem.age".publicKeys = [brennon nomad-c02];
-  "dc1-client-consul-1.pem.age".publicKeys = [brennon nomad-c02];
-  "dc1-client-consul-2-key.pem.age".publicKeys = [brennon nomad-c03];
-  "dc1-client-consul-2.pem.age".publicKeys = [brennon nomad-c03];
   "dc1-server-consul-0-key.pem.age".publicKeys = [brennon nomad-s01];
   "dc1-server-consul-0.pem.age".publicKeys = [brennon nomad-s01];
   "dc1-server-consul-1-key.pem.age".publicKeys = [brennon nomad-s02];

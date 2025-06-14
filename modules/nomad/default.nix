@@ -20,10 +20,10 @@ in {
     consulAgentCaPath = lib.mkOption {
       type = lib.types.str;
     };
-    consulClientKeyPath = lib.mkOption {
+    consulAgentCertKeyPath = lib.mkOption {
       type = lib.types.str;
     };
-    consulClientPath = lib.mkOption {
+    consulAgentCertPath = lib.mkOption {
       type = lib.types.str;
     };
     servers = lib.mkOption {
@@ -72,14 +72,17 @@ in {
           cni_path = "${pkgs.cni-plugins}/bin";
         };
 
-        consul = {
-          grpc_address = "127.0.0.1:8502";
-          address = "127.0.0.1:8500"; # Consul is running locally
-          ca_file = cfg.consulAgentCaPath;
-          cert_file = cfg.consulClientPath;
-          key_file = cfg.consulClientKeyPath;
-          verify_ssl = true;
-        };
+        consul =
+          {
+            grpc_address = "127.0.0.1:8502";
+            address = "127.0.0.1:8500";
+            ca_file = cfg.consulAgentCaPath;
+            verify_ssl = true;
+          }
+          // lib.optionalAttrs (cfg.role == "server") {
+            cert_file = cfg.consulAgentCertPath;
+            key_file = cfg.consulAgentCertKeyPath;
+          };
 
         telemetry = {
           collection_interval = "1s";

@@ -21,18 +21,6 @@
     owner = "consul";
     group = "consul";
   };
-  age.secrets.consulClientKey = {
-    file = ../../secrets/dc1-client-consul-0-key.pem.age;
-    mode = "600";
-    owner = "consul";
-    group = "consul";
-  };
-  age.secrets.consulClient = {
-    file = ../../secrets/dc1-client-consul-0.pem.age;
-    mode = "600";
-    owner = "consul";
-    group = "consul";
-  };
   age.secrets.dockerAuth.file = ../../secrets/docker-auth.json.age;
 
   custom.consul = {
@@ -40,8 +28,6 @@
     role = "client";
     gossipKeyPath = config.age.secrets.consulGossipEncryptionKey.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
-    consulClientKeyPath = config.age.secrets.consulClientKey.path;
-    consulClientPath = config.age.secrets.consulClient.path;
     bindAddr = "192.168.100.18";
     retryJoin = [
       "192.168.100.15"
@@ -58,8 +44,6 @@
     runAsRoot = true;
     dockerAuthPath = config.age.secrets.dockerAuth.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
-    consulClientKeyPath = config.age.secrets.consulClientKey.path;
-    consulClientPath = config.age.secrets.consulClient.path;
     servers = [
       "192.168.100.15:4647"
       "192.168.100.16:4647"
@@ -71,12 +55,6 @@
     mediaMount.enable = true;
     homelabMount.enable = true;
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

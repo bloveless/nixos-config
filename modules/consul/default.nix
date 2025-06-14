@@ -16,10 +16,10 @@ in {
     consulAgentCaPath = lib.mkOption {
       type = lib.types.str;
     };
-    consulClientKeyPath = lib.mkOption {
+    consulAgentCertKeyPath = lib.mkOption {
       type = lib.types.str;
     };
-    consulClientPath = lib.mkOption {
+    consulAgentCertPath = lib.mkOption {
       type = lib.types.str;
     };
     bindAddr = lib.mkOption {
@@ -56,14 +56,17 @@ in {
           else 0;
         retry_join = cfg.retryJoin;
         tls = {
-          defaults = {
-            verify_incoming = true;
-            verify_outgoing = true;
-            verify_server_hostname = true;
-            ca_file = cfg.consulAgentCaPath;
-            cert_file = cfg.consulClientPath; # this should only be set on the server they will be generated on the clients
-            key_file = cfg.consulClientKeyPath; # this should only be set on the server they will be generated on the clients
-          };
+          defaults =
+            {
+              verify_incoming = true;
+              verify_outgoing = true;
+              verify_server_hostname = true;
+              ca_file = cfg.consulAgentCaPath;
+            }
+            // lib.optionalAttrs (cfg.role == "server") {
+              cert_file = cfg.consulAgentCertPath;
+              key_file = cfg.consulAgentCertKeyPath;
+            };
         };
         auto_encrypt = {
           allow_tls = cfg.role == "server";

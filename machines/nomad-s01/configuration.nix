@@ -38,13 +38,13 @@
     owner = "consul";
     group = "consul";
   };
-  age.secrets.consulClientKey = {
+  age.secrets.consulAgentCertKey = {
     file = ../../secrets/dc1-server-consul-0-key.pem.age;
     mode = "600";
     owner = "consul";
     group = "consul";
   };
-  age.secrets.consulClient = {
+  age.secrets.consulAgentCert = {
     file = ../../secrets/dc1-server-consul-0.pem.age;
     mode = "600";
     owner = "consul";
@@ -57,8 +57,8 @@
     role = "server";
     gossipKeyPath = config.age.secrets.consulGossipEncryptionKey.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
-    consulClientKeyPath = config.age.secrets.consulClientKey.path;
-    consulClientPath = config.age.secrets.consulClient.path;
+    consulAgentCertKeyPath = config.age.secrets.consulAgentCertKey.path;
+    consulAgentCertPath = config.age.secrets.consulAgentCert.path;
     bindAddr = "192.168.100.15";
     retryJoin = [
       "192.168.100.15"
@@ -75,8 +75,8 @@
     runAsRoot = false;
     dockerAuthPath = config.age.secrets.dockerAuth.path;
     consulAgentCaPath = config.age.secrets.consulAgentCa.path;
-    consulClientKeyPath = config.age.secrets.consulClientKey.path;
-    consulClientPath = config.age.secrets.consulClient.path;
+    consulAgentCertKeyPath = config.age.secrets.consulAgentCertKey.path;
+    consulAgentCertPath = config.age.secrets.consulAgentCert.path;
     servers = [
       "192.168.100.15:4647"
       "192.168.100.16:4647"
