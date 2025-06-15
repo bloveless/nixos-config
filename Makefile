@@ -24,3 +24,12 @@ nomad-c02:
 
 nomad-c03:
 	nix run github:zhaofengli/colmena/v0.4.0 -- apply --on nomad-c03 --impure
+
+fileflows:
+	nix run github:zhaofengli/colmena/v0.4.0 -- apply --on @fileflows --impure
+
+fileflows-01:
+	nix run github:zhaofengli/colmena/v0.4.0 -- apply --on fileflows-01 --impure
+
+fileflows-02:
+	nix run github:zhaofengli/colmena/v0.4.0 -- apply --on fileflows-02 --impure

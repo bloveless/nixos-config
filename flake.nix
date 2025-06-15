@@ -120,6 +120,34 @@
           ./machines/nomad-c03/configuration.nix
         ];
       };
+
+      fileflows-01 = {...}: {
+        deployment = {
+          tags = ["fileflows"];
+          targetHost = "fileflows-01";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/fileflows-01/configuration.nix
+        ];
+      };
+
+      fileflows-02 = {...}: {
+        deployment = {
+          tags = ["fileflows"];
+          targetHost = "fileflows-02";
+          targetPort = 22;
+          targetUser = "brennon";
+          buildOnTarget = true;
+        };
+
+        imports = [
+          ./machines/fileflows-02/configuration.nix
+        ];
+      };
     };
   };
 }
